@@ -13,9 +13,13 @@ buttons.addEventListener('click', userInput = (evt) => {
     console.log(storedColors)
 })
 
-function cpuChooses() {
-    for(i=0; i<compChoices.length; i++){
-        console.log(compChoices[i])
-    }
+// function cpuChooses() {
+//     for(i=0; i<compChoices.length; i++){
+//         console.log(compChoices[i])
+//     }
+// }
+// cpuChooses()
+
+function cpuChooses(){
+    storedColors.push(Math.floor(Math.random() * compChoices.length))
 }
-cpuChooses()
