@@ -19,14 +19,14 @@
     border: 2px grey solid;
     grid-column: 1;
     grid-row: 1;
-    background-color: red;
+    background-color: darkred;
 }
 
 .blue--btn {
     border: 2px grey solid;
     grid-column: 2;
     grid-row: 1;
-    background-color: blue;
+    background-color: darkblue;
 }
 
 .green--btn {
@@ -34,7 +34,7 @@
     height: 100%;
     grid-column: 1;
     grid-row: 2;
-    background-color: green;
+    background-color: darkgreen;
 }
 
 .yellow--btn {
@@ -42,5 +42,12 @@
     height: 100%;
     grid-column: 2;
     grid-row: 2;
-    background-color: yellow;
+    background-color: darkgoldenrod;
+}
+
+.startGame {
+    margin-top: 50px;
+    border: 2px grey solid;
+    height: 20px;
+    width: 50px;
 }
