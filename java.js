@@ -51,7 +51,10 @@ function liteButtons() {
     for(i=0; i<compStoredColors.length; i++){
         console.log(compStoredColors[i][0])
         let litColor = document.getElementById(`${compStoredColors[i][0]}Btn`)
-        console.log(compStoredColors[i][1].active)
+        let getColor = `${compStoredColors[i][1].active}`
+        setTimeout(() => {
+            console.log(getColor) 
+        }, 1100 - (i * 20))
     }
 }
 liteButtons()
