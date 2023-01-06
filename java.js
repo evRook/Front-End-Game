@@ -1,10 +1,8 @@
 
 let buttons = document.querySelector('.game--btn__container')
-let soloButton = document.querySelectorAll('.game--btn')
 let startButton = document.querySelector('.startGame')
 let compStoredColors = []
 let playerStoredColors = []
-let tempStorage = []
 let activeColor;
 let inactiveColor;
 let timer = '';
@@ -45,18 +43,15 @@ startButton.addEventListener('click', () => {
 
 //turns btnColors into and array then pushes random value to new array
 function compChooses(){
+    
     let randomColor = Object.entries(btnColors)
     compStoredColors.push(randomColor[Math.floor(Math.random() * randomColor.length)])
-    // console.log(compStoredColors[0][1])
+
 }
 compChooses()
-compChooses()
-compChooses()
-compChooses()
-compChooses()
-compChooses()
 
-// does not work with start button ~kinda(if you click while its in sequence it breaks)
+
+// does not work with start button ~kinda
 function lightButtons() {
     function lightLoop() {
             
@@ -108,7 +103,8 @@ buttons.addEventListener('click', userInput = (evt) => {
 
     setTimeout(()=> {
         evt.target.style.backgroundColor = `${inactiveColor}`
-    }, 500)
+    }, 150)
+    
 })
 
 
