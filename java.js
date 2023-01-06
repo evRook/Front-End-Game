@@ -9,19 +9,19 @@ let tempStorage = []
 let btnColors = {
     red: {
         active: 'red',
-        inactive: 'y',
+        inactive: 'darkred',
     },
     blue: {
         active: 'blue',
-        inactive: 'y',
+        inactive: 'darkblue',
     },
     green: {
         active: 'green',
-        inactive: 'y',
+        inactive: 'darkgreen',
     },
     yellow: {
         active: 'goldenrod',
-        inactive: 'y',
+        inactive: 'darkgoldenrod',
     },
 }
 
@@ -50,11 +50,17 @@ compChooses()
 function liteButtons() {
     for(i=0; i<compStoredColors.length; i++){
         console.log(compStoredColors[i][0])
-        let litColor = document.getElementById(`${compStoredColors[i][0]}Btn`)
-        let getColor = `${compStoredColors[i][1].active}`
+        let getButton = document.getElementById(`${compStoredColors[i][0]}Btn`)
+        let activeColor = `${compStoredColors[i][1].active}`
+        let inactiveColor = `${compStoredColors[i][1].inactive}`
+
         setTimeout(() => {
-            console.log(getColor) 
-        }, 1100 - (i * 20))
+            getButton.style.backgroundColor = `${activeColor}`
+        }, 1000 - (i * 20))
+
+        setTimeout(() => {
+            getButton.style.backgroundColor = `${inactiveColor}`
+        }, 1500 - (i * 20))
     }
 }
 liteButtons()
