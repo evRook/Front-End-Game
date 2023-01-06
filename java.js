@@ -36,6 +36,8 @@ let btnColors = {
 startButton.addEventListener('click', () => {
     compStoredColors = [];
     playerStoredColors = [];
+    i = 0
+    j = 0
     compChooses()
     lightButtons()
 })
@@ -54,38 +56,40 @@ compChooses()
 compChooses()
 compChooses()
 
-
-
-
-
-
-//does not do each individual color if more than one value in compStoredColors
+// does not work with start button ~kinda(if you click while its in sequence it breaks)
 function lightButtons() {
     function lightLoop() {
             
         setTimeout(() => {
-            console.log(compStoredColors[i][0])
+
             let getButton = document.getElementById(`${compStoredColors[i][0]}Btn`)
             activeColor = `${compStoredColors[i][1].active}`
+            
             getButton.style.backgroundColor = `${activeColor}`
+            
             i++
             timer = i
-            console.log(i)
+        
         }, 1000 - (timer * 20))
 
         setTimeout(() => {
-            console.log(compStoredColors[j][0])
+
             let getSameButton = document.getElementById(`${compStoredColors[j][0]}Btn`)
             inactiveColor = `${compStoredColors[j][1].inactive}`
+            
             getSameButton.style.backgroundColor = `${inactiveColor}`
+            
             j++
-            console.log(j)
+            
             if(j < compStoredColors.length){
                 lightLoop()
             }
+
         }, 1500 - (timer * 20))
+
     }
     lightLoop()
+    
 }
 lightButtons()
 
