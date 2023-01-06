@@ -7,6 +7,9 @@ let playerStoredColors = []
 let tempStorage = []
 let activeColor;
 let inactiveColor;
+let timer = '';
+let i = 0
+let j = 0
 
 let btnColors = {
     red: {
@@ -42,26 +45,47 @@ startButton.addEventListener('click', () => {
 function compChooses(){
     let randomColor = Object.entries(btnColors)
     compStoredColors.push(randomColor[Math.floor(Math.random() * randomColor.length)])
-    console.log(compStoredColors[0][1])
+    // console.log(compStoredColors[0][1])
 }
 compChooses()
+compChooses()
+compChooses()
+compChooses()
+compChooses()
+compChooses()
+
+
+
+
+
 
 //does not do each individual color if more than one value in compStoredColors
 function lightButtons() {
-    for(i=0; i<compStoredColors.length; i++){
-        console.log(compStoredColors[i][0])
-        let getButton = document.getElementById(`${compStoredColors[i][0]}Btn`)
-        activeColor = `${compStoredColors[i][1].active}`
-        inactiveColor = `${compStoredColors[i][1].inactive}`
-
+    function lightLoop() {
+            
         setTimeout(() => {
+            console.log(compStoredColors[i][0])
+            let getButton = document.getElementById(`${compStoredColors[i][0]}Btn`)
+            activeColor = `${compStoredColors[i][1].active}`
             getButton.style.backgroundColor = `${activeColor}`
-        }, 1000 - (i * 20))
+            i++
+            timer = i
+            console.log(i)
+        }, 1000 - (timer * 20))
 
         setTimeout(() => {
-            getButton.style.backgroundColor = `${inactiveColor}`
-        }, 1500 - (i * 20))
+            console.log(compStoredColors[j][0])
+            let getSameButton = document.getElementById(`${compStoredColors[j][0]}Btn`)
+            inactiveColor = `${compStoredColors[j][1].inactive}`
+            getSameButton.style.backgroundColor = `${inactiveColor}`
+            j++
+            console.log(j)
+            if(j < compStoredColors.length){
+                lightLoop()
+            }
+        }, 1500 - (timer * 20))
     }
+    lightLoop()
 }
 lightButtons()
 
