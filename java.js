@@ -29,13 +29,10 @@ let btnColors = {
 
 //START GAME: clears data and has computer coose
 startButton.addEventListener('click', () => {
-    console.log('start button')
     compStoredColors = [];
     playerStoredColor = [];
-    console.log(btnColors.red.active)
-    console.log(btnColors.red.inactive)
     compChooses()
-    console.log(compStoredColors[0][1].active)
+    liteButtons()
 })
 
 
