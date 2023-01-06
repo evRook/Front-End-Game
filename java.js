@@ -33,7 +33,10 @@ function compTurn(){
     for(i=0; i < compStoredColors.length; i++){
         for(j=0; j<soloButton.length; j++) {
             let litButton = soloButton[j].getAttribute("data-color")
-            console.log(litButton)
+            let litColor = compStoredColors[i]
+            if(litButton === litColor){
+                soloButton[j].style.backgroundColor = `${litColor}`
+            }   
         }
     }
 
