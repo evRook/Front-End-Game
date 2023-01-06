@@ -62,6 +62,12 @@ function liteButtons() {
 }
 liteButtons()
 
+buttons.addEventListener('click', userInput = (evt) => {
+    playerStoredColors.push(evt.target.getAttribute('data-color'))
+    console.log(playerStoredColors)
+})
+
+
 //tabling this for now
 
 // buttons.addEventListener('click', userInput = (evt) => {
