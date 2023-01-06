@@ -7,7 +7,7 @@
     width: 510px;
 }
 
-.game--btns {
+.game--btn__container {
     height: 500px;
     width: 500px;
     display: grid;
@@ -15,21 +15,21 @@
     grid-template-rows: 250px 250px;
 }
 
-.red--btn {
+#redBtn {
     border: 2px grey solid;
     grid-column: 1;
     grid-row: 1;
     background-color: darkred;
 }
 
-.blue--btn {
+#blueBtn {
     border: 2px grey solid;
     grid-column: 2;
     grid-row: 1;
     background-color: darkblue;
 }
 
-.green--btn {
+#greenBtn {
     border: 2px grey solid;
     height: 100%;
     grid-column: 1;
@@ -37,7 +37,7 @@
     background-color: darkgreen;
 }
 
-.yellow--btn {
+#yellowBtn {
     border: 2px grey solid;
     height: 100%;
     grid-column: 2;
