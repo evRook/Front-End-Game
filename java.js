@@ -24,5 +24,6 @@ let storedColors = []
 // })
 
 buttons.addEventListener('click', userInput = (evt) => {
-    console.log(evt.target.getAttribute("data-color"))
+    storedColors.push(evt.target.getAttribute("data-color"))
+    console.log(storedColors)
 })
