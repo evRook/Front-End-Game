@@ -8,19 +8,19 @@ let tempStorage = []
 
 let btnColors = {
     red: {
-        active: 'x',
+        active: 'red',
         inactive: 'y',
     },
     blue: {
-        active: 'x',
+        active: 'blue',
         inactive: 'y',
     },
     green: {
-        active: 'x',
+        active: 'green',
         inactive: 'y',
     },
     yellow: {
-        active: 'x',
+        active: 'goldenrod',
         inactive: 'y',
     },
 }
@@ -43,13 +43,18 @@ startButton.addEventListener('click', () => {
 function compChooses(){
     let randomColor = Object.entries(btnColors)
     compStoredColors.push(randomColor[Math.floor(Math.random() * randomColor.length)])
-    console.log(compStoredColors[0][0])
+    console.log(compStoredColors[0][1])
 }
+compChooses()
 
-
-
-
-
+function liteButtons() {
+    for(i=0; i<compStoredColors.length; i++){
+        console.log(compStoredColors[i][0])
+        let litColor = document.getElementById(`${compStoredColors[i][0]}Btn`)
+        console.log(compStoredColors[i][1].active)
+    }
+}
+liteButtons()
 
 //tabling this for now
 
