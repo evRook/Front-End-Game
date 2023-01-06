@@ -6,11 +6,14 @@ let greenBtn = document.querySelector('.green--btn') //gets green button
 let yellowBtn = document.querySelector('.yellow--btn') //gets yellow button
 let buttons = document.querySelector('.game--btns')
 let compChoices = ['red','blue','green','yellow']
-let storedColors = []
+let compStoredColors = []
+let playerStoredColors = []
 
 buttons.addEventListener('click', userInput = (evt) => {
-    storedColors.push(evt.target.getAttribute("data-color"))
-    console.log(storedColors)
+    playerStoredColors.push(evt.target.getAttribute("data-color"))
+    console.log(playerStoredColors)
+    cpuChooses();
+    console.log(compStoredColors)
 })
 
 // function cpuChooses() {
@@ -21,5 +24,6 @@ buttons.addEventListener('click', userInput = (evt) => {
 // cpuChooses()
 
 function cpuChooses(){
-    storedColors.push(Math.floor(Math.random() * compChoices.length))
+    let randomColor = Math.floor(Math.random() * compChoices.length)
+    compStoredColors.push(compChoices[randomColor])
 }
