@@ -1,23 +1,28 @@
 console.log('hello world')
 
-let redBtn = document.querySelector('.red--btn')
-let blueBtn = document.querySelector('.blue--btn')
-let greenBtn = document.querySelector('.green--btn')
-let yellowBtn = document.querySelector('.yellow--btn')
+let redBtn = document.querySelector('.red--btn') //gets red button
+let blueBtn = document.querySelector('.blue--btn') //gets blue button
+let greenBtn = document.querySelector('.green--btn') //gets green button
+let yellowBtn = document.querySelector('.yellow--btn') //gets yellow button
+let buttons = document.querySelector('.game--btns')
 let storedColors = []
 
-redBtn.addEventListener('click', redTest => {
-    console.log('red')
-})
+// redBtn.addEventListener('click', redTest => {
+//     console.log('red')
+// })
 
-blueBtn.addEventListener('click', blueTest => {
-    console.log('blue')
-})
+// blueBtn.addEventListener('click', blueTest => {
+//     console.log('blue')
+// })
 
-greenBtn.addEventListener('click', greenTest => {
-    console.log('green')
-})
+// greenBtn.addEventListener('click', greenTest => {
+//     console.log('green')
+// })
 
-yellowBtn.addEventListener('click', yellowTest => {
-    console.log('yellow')
+// yellowBtn.addEventListener('click', yellowTest => {
+//     console.log('yellow')
+// })
+
+buttons.addEventListener('click', userInput = (evt) => {
+    console.log(evt.target.getAttribute("data-color"))
 })
