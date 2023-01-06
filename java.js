@@ -26,14 +26,25 @@ let btnColors = {
 }
 
 
+
+//START GAME: clears data and has computer coose
 startButton.addEventListener('click', () => {
     console.log('start button')
     compStoredColors = [];
     playerStoredColor = [];
     console.log(btnColors.red.active)
     console.log(btnColors.red.inactive)
+    compChooses()
+    console.log(compStoredColors[0][1].active)
 })
 
+
+//turns btnColors into and array then pushes random value to new array
+function compChooses(){
+    let randomColor = Object.entries(btnColors)
+    compStoredColors.push(randomColor[Math.floor(Math.random() * randomColor.length)])
+    console.log(compStoredColors[0][0])
+}
 
 
 
