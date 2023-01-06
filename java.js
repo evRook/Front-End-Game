@@ -22,7 +22,7 @@ let btnColors = {
         active: 'green',
         inactive: 'darkgreen',
     },
-    yellow: {
+    goldenrod: {
         active: 'goldenrod',
         inactive: 'darkgoldenrod',
     },
@@ -48,7 +48,6 @@ function compChooses(){
     compStoredColors.push(randomColor[Math.floor(Math.random() * randomColor.length)])
 
 }
-compChooses()
 
 
 // does not work with start button ~kinda
@@ -86,7 +85,6 @@ function lightButtons() {
     lightLoop()
     
 }
-lightButtons()
 
 
 // clicking too fast changes backgrounds to wrong color
@@ -98,17 +96,30 @@ buttons.addEventListener('click', userInput = (evt) => {
     playerStoredColors.push(activeColor)
 
     console.log(playerStoredColors)
+    console.log(compStoredColors)
 
     evt.target.style.backgroundColor = `${activeColor}`
 
-    setTimeout(()=> {
+    setTimeout(() => {
         evt.target.style.backgroundColor = `${inactiveColor}`
     }, 150)
-    
+
+    gameLogic()
+
 })
 
 
 
+function gameLogic() {
+
+    for(k=0; k<compStoredColors.length; k++){
+        if(compStoredColors[k][0] === playerStoredColors[k]){
+            console.log('correct')
+        }else{
+            console.log('wrong')
+        }
+    }
+}
 
 
 
