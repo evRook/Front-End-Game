@@ -5,6 +5,8 @@ let startButton = document.querySelector('.startGame')
 let compStoredColors = []
 let playerStoredColors = []
 let tempStorage = []
+let activeColor;
+let inactiveColor;
 
 let btnColors = {
     red: {
@@ -30,7 +32,7 @@ let btnColors = {
 //START GAME: clears data and has computer coose
 startButton.addEventListener('click', () => {
     compStoredColors = [];
-    playerStoredColor = [];
+    playerStoredColors = [];
     compChooses()
     liteButtons()
 })
@@ -48,8 +50,8 @@ function liteButtons() {
     for(i=0; i<compStoredColors.length; i++){
         console.log(compStoredColors[i][0])
         let getButton = document.getElementById(`${compStoredColors[i][0]}Btn`)
-        let activeColor = `${compStoredColors[i][1].active}`
-        let inactiveColor = `${compStoredColors[i][1].inactive}`
+        activeColor = `${compStoredColors[i][1].active}`
+        inactiveColor = `${compStoredColors[i][1].inactive}`
 
         setTimeout(() => {
             getButton.style.backgroundColor = `${activeColor}`
@@ -63,8 +65,19 @@ function liteButtons() {
 liteButtons()
 
 buttons.addEventListener('click', userInput = (evt) => {
-    playerStoredColors.push(evt.target.getAttribute('data-color'))
+
+    activeColor = evt.target.getAttribute('data-color')
+    inactiveColor = evt.target.getAttribute('data-original')
+
+    playerStoredColors.push(activeColor)
+
     console.log(playerStoredColors)
+
+    evt.target.style.backgroundColor = `${activeColor}`
+
+    setTimeout(()=> {
+        evt.target.style.backgroundColor = `${inactiveColor}`
+    }, 500)
 })
 
 
