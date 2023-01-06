@@ -1,12 +1,7 @@
-console.log('hello world')
 
-let redBtn = document.querySelector('.red--btn') //gets red button
-let blueBtn = document.querySelector('.blue--btn') //gets blue button
-let greenBtn = document.querySelector('.green--btn') //gets green button
-let yellowBtn = document.querySelector('.yellow--btn') //gets yellow button
 let buttons = document.querySelector('.game--btn__container')
 let soloButton = document.querySelectorAll('.game--btn')
-let compChoices = ['red','blue','green','yellow']
+let compChoices = ['red','blue','green','goldenrod']
 let compStoredColors = []
 let playerStoredColors = []
 
@@ -26,6 +21,8 @@ function cpuChooses(){
     compStoredColors.push(compChoices[randomColor])
 }
 
+
+
 function compTurn(){
 
     cpuChooses();
@@ -34,8 +31,14 @@ function compTurn(){
         for(j=0; j<soloButton.length; j++) {
             let litButton = soloButton[j].getAttribute("data-color")
             let litColor = compStoredColors[i]
+            let originalColor = soloButton[j].getAttribute("data-original")
+            let originalButton = soloButton[j]
             if(litButton === litColor){
                 soloButton[j].style.backgroundColor = `${litColor}`
+                function flashButton(){
+                    originalButton.style.backgroundColor = `${originalColor}`
+                }
+                setTimeout(flashButton, 1100 - (i*20));
             }   
         }
     }
