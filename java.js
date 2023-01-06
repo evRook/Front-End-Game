@@ -1,12 +1,19 @@
 
 let buttons = document.querySelector('.game--btn__container')
 let soloButton = document.querySelectorAll('.game--btn')
+let startButton = document.querySelector('.startGame')
 let compChoices = ['red','blue','green','goldenrod']
 let compStoredColors = []
 let playerStoredColors = []
 let tempStorage = []
 
 
+
+startButton.addEventListener('click', () => {
+    console.log('start button')
+    compStoredColors = [];
+    playerStoredColor = [];
+})
 
 
 
