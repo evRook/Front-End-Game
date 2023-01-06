@@ -34,7 +34,7 @@ startButton.addEventListener('click', () => {
     compStoredColors = [];
     playerStoredColors = [];
     compChooses()
-    liteButtons()
+    lightButtons()
 })
 
 
@@ -46,7 +46,8 @@ function compChooses(){
 }
 compChooses()
 
-function liteButtons() {
+//does not do each individual color if more than one value in compStoredColors
+function lightButtons() {
     for(i=0; i<compStoredColors.length; i++){
         console.log(compStoredColors[i][0])
         let getButton = document.getElementById(`${compStoredColors[i][0]}Btn`)
@@ -62,8 +63,10 @@ function liteButtons() {
         }, 1500 - (i * 20))
     }
 }
-liteButtons()
+lightButtons()
 
+
+// clicking too fast changes backgrounds to wrong color
 buttons.addEventListener('click', userInput = (evt) => {
 
     activeColor = evt.target.getAttribute('data-color')
@@ -79,6 +82,12 @@ buttons.addEventListener('click', userInput = (evt) => {
         evt.target.style.backgroundColor = `${inactiveColor}`
     }, 500)
 })
+
+
+
+
+
+
 
 
 //tabling this for now
