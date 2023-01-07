@@ -1,5 +1,6 @@
 
 let buttons = document.querySelector('.game--btn__container')
+let allButtons = document.querySelectorAll('.game--btn')
 let startButton = document.querySelector('.startGame')
 let antiClick = document.querySelector('.antiClick')
 let compStoredColors = []
@@ -113,7 +114,7 @@ buttons.addEventListener('click', userInput = (evt) => {
     evt.target.style.backgroundColor = `${activeColor}`
 
     antiClick.style.display = 'block'
-    
+
     setTimeout(() => {
         evt.target.style.backgroundColor = `${inactiveColor}`
         antiClick.style.display = 'none'
@@ -125,7 +126,7 @@ buttons.addEventListener('click', userInput = (evt) => {
 })
 
 
-// works? not stress tested
+// works? needs game over : not stress tested
 function gameLogic() {
     if(compStoredColors[counter][0] === playerStoredColors[counter]){
         console.log('correct')
@@ -148,121 +149,50 @@ function gameLogic() {
             highScore = score
         }
         console.log(highScore)
-        // gameOver(); // placeholder
+        gameOver();
     }
 }
 
+function gameOver() {
 
-
-
-
-//tabling this for now
-
-// buttons.addEventListener('click', userInput = (evt) => {
-//     playerStoredColors.push(evt.target.getAttribute("data-color"))
-//     console.log(playerStoredColors)
-// })
-
-// // function cpuChooses() {
-// //     for(i=0; i<compChoices.length; i++){
-// //         console.log(compChoices[i])
-// //     }
-// // }
-// // cpuChooses()
-
-// function cpuChooses(){
-//     let randomColor = Math.floor(Math.random() * compChoices.length)
-//     compStoredColors.push(compChoices[randomColor])
-// }
-
-// function compTurn() {
-
-//     cpuChooses();
-//     console.log(compStoredColors)
-
-// }
-
-
-// function playerTurn() {
-
-//     //clear playerStoredColor
-
-// }
-
-
-
-//tabling this for now
-
-// compStoredColors.forEach(()=>{
-//     for(i=0; i<soloButton.length; i++){
+        let m = 0
+         
+    function gameOverLights() {
         
-//     }
-// })
+        setTimeout(() => {
+            allButtons.forEach((btn) => {
 
+                btn.style.backgroundColor = 'red' 
+                btn.style.borderColor = 'red'
+            
+            })
+        }, 300)
 
-// function compTurn(){
+        setTimeout(() => {
+            allButtons.forEach((btn) => {
 
-//     cpuChooses();
+                btn.style.backgroundColor = 'darkred' 
+                btn.style.borderColor = 'darkred'
+                
+                if(m<5){
+                    m++
+                    gameOverLights()
+                }
 
+            })
+        }, 500)
 
+    }
+    gameOverLights()
 
-    // for(i=0; i < compStoredColors.length; i++){
-    //     for(j=0; j<soloButton.length; j++) {
-    //         let litButton = soloButton[j].getAttribute("data-color")
-    //         let litColor = compStoredColors[i]
-    //         let originalColor = soloButton[j].getAttribute("data-original")
-    //         let originalButton = soloButton[j]
-    //         console.log(litColor)
-    //         if(litButton === litColor){
-    //             soloButton[j].style.backgroundColor = `${litColor}`
-    //             setTimeout(()=> {
-    //                 originalButton.style.backgroundColor = `${originalColor}`
-    //             }, 1100 - (i * 20));
-    //         }
-    //     }
-    // } 
+    setTimeout(() => {
+        allButtons.forEach((btn) => {
 
-    
-// compStoredColors.forEach(() => {
-//     console.log(compStoredColors)
-// })
+            btn.style.backgroundColor = null
+            btn.style.borderColor = null
 
-// soloButton.forEach(() => {
-//     console.log(soloButton)
-// })
+        })
+            
+    }, 2500)
 
-
-
-    // let litColor;
-    // let originalButton;
-
-    // for(i=0; i<compStoredColors.length; i++){
-    //     litColor = compStoredColors[i]
-    //     console.log(litColor)
-    // }
-
-    // for(j=0; j<soloButton.length; j++){
-    //     originalButton = soloButton[j]
-    //     console.log(originalButton)
-    // }
-
-    // const match = compStoredColors.filter(element => compChoices.includes(element))
-    // console.log(match)
-    
-
-// }
-// compTurn()
-
-
-
-// let test(a,b){
-//     for (let i = 0; i<a.length;i++){
-//         for(let k = 0; k<b.length: k++){
-//             if(a[i] === b[k]){
-
-//             }
-//         }
-//     }
-// }
-
-// test(compStoredColors,soloButton)
+}
