@@ -6,6 +6,8 @@ let playerStoredColors = []
 let activeColor;
 let inactiveColor;
 let counter = 0;
+let score = 0;
+let highScore = 0;
 let timer = '';
 let i = 0
 let j = 0
@@ -38,6 +40,7 @@ startButton.addEventListener('click', () => {
     i = 0
     j = 0
     counter = 0
+    score = 0
     compChooses()
     lightButtons()
 })
@@ -65,6 +68,8 @@ function lightButtons() {
             
             i++
             timer = i
+
+            console.log(compStoredColors)
         
         }, 1000 - (timer * 20))
 
@@ -111,18 +116,30 @@ buttons.addEventListener('click', userInput = (evt) => {
 })
 
 
-// works? cant tell yet light loop starting from 0
+// works? not stress tested
 function gameLogic() {
-    if(compStoredColors[0][0] === playerStoredColors[counter]){
+    if(compStoredColors[counter][0] === playerStoredColors[counter]){
         console.log('correct')
+        console.log(counter)
         counter += 1
         if(compStoredColors.length === counter){
+            playerStoredColors = []
             counter = 0
+            i = 0
+            j = 0
+            score += 1
             compChooses()
             lightButtons()
+            console.log(counter)
+            console.log(score)
         }
     }else{
         console.log('wrong')
+        if(score > highScore){
+            highScore = score
+        }
+        console.log(highScore)
+        // gameOver(); // placeholder
     }
 }
 
