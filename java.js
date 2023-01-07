@@ -145,10 +145,19 @@ function gameLogic() {
         }
     }else{
         console.log('wrong')
+
+        playerStoredColors = []
+        counter = 0
+        i = 0
+        j = 0
+        counter = 0
+
         if(score > highScore){
             highScore = score
         }
+
         console.log(highScore)
+
         gameOver();
     }
 }
@@ -160,6 +169,9 @@ function gameOver() {
     function gameOverLights() {
         
         setTimeout(() => {
+
+            antiClick.style.display = 'block'
+
             allButtons.forEach((btn) => {
 
                 btn.style.backgroundColor = 'red' 
@@ -190,6 +202,7 @@ function gameOver() {
 
             btn.style.backgroundColor = null
             btn.style.borderColor = null
+            antiClick.style.display = 'none'
 
         })
             
