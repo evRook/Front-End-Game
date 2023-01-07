@@ -67,6 +67,16 @@
     background-color: darkgoldenrod;
 }
 
+.antiClick {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255,255,255,0.3);
+}
+
 .startGame {
     margin-top: 50px;
     border: 2px grey solid;

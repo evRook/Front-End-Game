@@ -1,6 +1,7 @@
 
 let buttons = document.querySelector('.game--btn__container')
 let startButton = document.querySelector('.startGame')
+let antiClick = document.querySelector('.antiClick')
 let compStoredColors = []
 let playerStoredColors = []
 let activeColor;
@@ -58,8 +59,10 @@ function compChooses(){
 // does not work with start button ~kinda
 function lightButtons() {
     function lightLoop() {
-            
+        
         setTimeout(() => {
+
+            antiClick.style.display = 'block'
 
             let getButton = document.getElementById(`${compStoredColors[i][0]}Btn`)
             activeColor = `${compStoredColors[i][1].active}`
@@ -84,6 +87,8 @@ function lightButtons() {
             
             if(j < compStoredColors.length){
                 lightLoop()
+            }else{
+                antiClick.style.display = 'none'
             }
 
         }, 1500 - (timer * 20))
@@ -107,9 +112,13 @@ buttons.addEventListener('click', userInput = (evt) => {
 
     evt.target.style.backgroundColor = `${activeColor}`
 
+    antiClick.style.display = 'block'
+    
     setTimeout(() => {
         evt.target.style.backgroundColor = `${inactiveColor}`
+        antiClick.style.display = 'none'
     }, 150)
+     
 
     gameLogic();
 
