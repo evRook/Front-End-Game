@@ -5,6 +5,7 @@ let compStoredColors = []
 let playerStoredColors = []
 let activeColor;
 let inactiveColor;
+let counter = 0;
 let timer = '';
 let i = 0
 let j = 0
@@ -36,6 +37,7 @@ startButton.addEventListener('click', () => {
     playerStoredColors = [];
     i = 0
     j = 0
+    counter = 0
     compChooses()
     lightButtons()
 })
@@ -104,20 +106,23 @@ buttons.addEventListener('click', userInput = (evt) => {
         evt.target.style.backgroundColor = `${inactiveColor}`
     }, 150)
 
-    gameLogic()
+    gameLogic();
 
 })
 
 
-
+// works? cant tell yet light loop starting from 0
 function gameLogic() {
-
-    for(k=0; k<compStoredColors.length; k++){
-        if(compStoredColors[k][0] === playerStoredColors[k]){
-            console.log('correct')
-        }else{
-            console.log('wrong')
+    if(compStoredColors[0][0] === playerStoredColors[counter]){
+        console.log('correct')
+        counter += 1
+        if(compStoredColors.length === counter){
+            counter = 0
+            compChooses()
+            lightButtons()
         }
+    }else{
+        console.log('wrong')
     }
 }
 
