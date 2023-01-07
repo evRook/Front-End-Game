@@ -96,13 +96,14 @@ function lightButtons() {
             activeColor = `${compStoredColors[i][1].active}`
             
             getButton.style.backgroundColor = `${activeColor}`
+            // getButton.style.borderColor = `${activeColor}`
             
             i++
             timer = i
 
             console.log(compStoredColors)
         
-        }, 1000 - (timer * 25))
+        }, 800 - (timer * 20))
 
         setTimeout(() => {
 
@@ -110,6 +111,8 @@ function lightButtons() {
             inactiveColor = `${compStoredColors[j][1].inactive}`
             
             getSameButton.style.backgroundColor = `${inactiveColor}`
+            // getSameButton.style.borderColor = `${inactiveColor}`
+
             
             j++
             
@@ -119,7 +122,7 @@ function lightButtons() {
                 antiClick.style.display = 'none'
             }
 
-        }, 1500 - (timer * 25))
+        }, 1200 - (timer * 20))
 
     }
     lightLoop()
@@ -147,6 +150,13 @@ buttons.addEventListener('click', userInput = (evt) => {
 
     gameLogic();
 
+})
+
+buttons.addEventListener('mouseover', () =>{
+    allButtons.forEach((btn) => {
+        btn.style.backgroundColor = null
+        btn.style.borderColor = null
+    })
 })
 
 
