@@ -3,6 +3,9 @@ let buttons = document.querySelector('.game--btn__container')
 let allButtons = document.querySelectorAll('.game--btn')
 let startButton = document.querySelector('.startGame')
 let antiClick = document.querySelector('.antiClick')
+let startScreen = document.querySelector('.startScreen')
+let quit = document.querySelector('.quit--btn')
+let restart = document.querySelector('.restart--btn')
 let compStoredColors = []
 let playerStoredColors = []
 let activeColor;
@@ -37,6 +40,10 @@ let btnColors = {
 
 //START GAME: clears data and has computer coose
 startButton.addEventListener('click', () => {
+
+    startScreen.style.display = 'none'
+    antiClick.style.display = 'block'
+
     compStoredColors = [];
     playerStoredColors = [];
     i = 0
@@ -45,6 +52,26 @@ startButton.addEventListener('click', () => {
     score = 0
     compChooses()
     lightButtons()
+
+})
+
+quit.addEventListener('click', () => {
+
+    startScreen.style.display = 'block'
+
+})
+
+restart.addEventListener('click', () => {
+
+    compStoredColors = [];
+    playerStoredColors = [];
+    i = 0
+    j = 0
+    counter = 0
+    score = 0
+    compChooses()
+    lightButtons()
+
 })
 
 
@@ -75,7 +102,7 @@ function lightButtons() {
 
             console.log(compStoredColors)
         
-        }, 500 - (timer * 20))
+        }, 1000 - (timer * 25))
 
         setTimeout(() => {
 
@@ -92,7 +119,7 @@ function lightButtons() {
                 antiClick.style.display = 'none'
             }
 
-        }, 1000 - (timer * 20))
+        }, 1500 - (timer * 25))
 
     }
     lightLoop()
