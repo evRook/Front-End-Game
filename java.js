@@ -1,3 +1,20 @@
+// TO-DO :
+//  -change all classes to js-classes
+//  -change colors to hex code
+//  -chage button colors to proper positions
+//  -add sounds
+//  -connect power button
+//      -add fashing to power button
+//      -add rest and functionality to power button
+//  -remove start reset: have it only open page: power button is new start button
+//  -connect score to html
+//  -connect high score to html
+//      -need to be created
+//  
+
+
+
+
 
 let buttons = document.querySelector('.game--btn__container')
 let allButtons = document.querySelectorAll('.game--btn')
