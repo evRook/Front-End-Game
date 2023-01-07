@@ -75,7 +75,7 @@ function lightButtons() {
 
             console.log(compStoredColors)
         
-        }, 1000 - (timer * 20))
+        }, 500 - (timer * 20))
 
         setTimeout(() => {
 
@@ -92,7 +92,7 @@ function lightButtons() {
                 antiClick.style.display = 'none'
             }
 
-        }, 1500 - (timer * 20))
+        }, 1000 - (timer * 20))
 
     }
     lightLoop()
@@ -107,9 +107,6 @@ buttons.addEventListener('click', userInput = (evt) => {
     inactiveColor = evt.target.getAttribute('data-original')
 
     playerStoredColors.push(activeColor)
-
-    console.log(playerStoredColors)
-    console.log(compStoredColors)
 
     evt.target.style.backgroundColor = `${activeColor}`
 
@@ -144,9 +141,10 @@ function gameLogic() {
             console.log(score)
         }
     }else{
-        console.log('wrong')
+        console.log('incorrect')
 
         playerStoredColors = []
+        compStoredColors = []
         counter = 0
         i = 0
         j = 0
@@ -155,8 +153,6 @@ function gameLogic() {
         if(score > highScore){
             highScore = score
         }
-
-        console.log(highScore)
 
         gameOver();
     }
@@ -206,6 +202,6 @@ function gameOver() {
 
         })
             
-    }, 2500)
+    }, 1700)
 
 }
