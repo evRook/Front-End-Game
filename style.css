@@ -10,6 +10,15 @@ body {
     max-width: 650px;
 }
 
+.game--style-div {
+    margin: auto;
+    height: 650px;
+    width: 575px;
+    border: 16px rgb(18, 18, 18) outset;
+    border-radius: 30%;
+    background-color: rgb(9, 9, 9);
+}
+
 .game--btn__container {
     display: grid;
     grid-gap: 15px;
@@ -19,9 +28,13 @@ body {
     padding: 10px;
     height: 550px;
     width: 550px;
-    border: 4px grey ridge;
-    border-radius: 42%;
+    border: 6px rgb(18, 18, 18) outset;
+    border-radius: 40%;
     background-color: black;
+}
+
+.game--btn {
+    background-image: url(/img/skin-side-up.png);
 }
 
 .game--btn:active {
@@ -34,7 +47,7 @@ body {
     border-top-left-radius: 100%;
     border-top-right-radius: 10%;
     border-bottom-left-radius: 10%;
-    border-bottom-right-radius: 10%;
+    border-bottom-right-radius: 15%;
     border: 5px darkred outset;
     background-color: darkred;
 }
@@ -49,7 +62,7 @@ body {
     grid-row: 1;
     border-top-left-radius: 10%;
     border-top-right-radius: 100%;
-    border-bottom-left-radius: 10%;
+    border-bottom-left-radius: 15%;
     border-bottom-right-radius: 10%;
     border: 5px darkblue outset;
     background-color: darkblue;
@@ -66,7 +79,7 @@ body {
     grid-column: 1;
     grid-row: 2;
     border-top-left-radius: 10%;
-    border-top-right-radius: 10%;
+    border-top-right-radius: 15%;
     border-bottom-left-radius: 100%;
     border-bottom-right-radius: 10%;
     border: 5px darkgreen outset;
@@ -83,7 +96,7 @@ body {
     height: 100%;
     grid-column: 2;
     grid-row: 2;
-    border-top-left-radius: 10%;
+    border-top-left-radius: 15%;
     border-top-right-radius: 10%;
     border-bottom-left-radius: 10%;
     border-bottom-right-radius: 100%;
@@ -96,6 +109,70 @@ body {
     background-color: goldenrod;
 }
 
+.control--panel {
+    border: 2px grey solid;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    color:white;
+}
+
+.power--container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    rotate: 20deg;
+    margin-top: 0;
+}
+
+.power--btn {
+    height: 10px;
+    width: 10px;
+    background-color: rgb(151, 151, 151);
+    border-radius: 50%;
+    border: 4px darkgray outset;
+}
+
+.power--txt {
+    margin: 0 0 5px 0;
+}
+
+.score--screen {
+    height: 25px;
+    width: 50px;
+    margin-bottom: 5px;
+    color: red;
+    border: 2px darkred ridge;
+    background-color: rgb(84, 0, 0);
+    text-align: center;
+    font-size: 22px;
+}
+
+.game--logo {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.restart--container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    rotate: -20deg;
+    margin-top: 0;
+}
+
+.restart--txt {
+    margin: 0 0 5px 0;
+}
+
+.restart--btn {
+    height: 10px;
+    width: 10px;
+    background-color: rgb(151, 151, 151);
+    border-radius: 50%;
+    border: 4px darkgray outset;
+}
 
 .antiClick {
     display: none;
