@@ -23,6 +23,8 @@ let antiClick = document.querySelector('.antiClick')
 let startScreen = document.querySelector('.startScreen')
 let quit = document.querySelector('.quit--btn')
 let restart = document.querySelector('.restart--btn')
+let powerBtn = document.querySelector('.power--btn')
+let scoreScreen = document.querySelector('.score--screen')
 let compStoredColors = []
 let playerStoredColors = []
 let activeColor;
@@ -31,6 +33,7 @@ let counter = 0;
 let score = 0;
 let highScore = 0;
 let timer = '';
+let powerOn = false
 let i = 0
 let j = 0
 
@@ -59,16 +62,7 @@ let btnColors = {
 startButton.addEventListener('click', () => {
 
     startScreen.style.display = 'none'
-    antiClick.style.display = 'block'
-
-    compStoredColors = [];
-    playerStoredColors = [];
-    i = 0
-    j = 0
-    counter = 0
-    score = 0
-    compChooses()
-    lightButtons()
+    // antiClick.style.display = 'block'
 
 })
 
@@ -89,6 +83,15 @@ restart.addEventListener('click', () => {
     compChooses()
     lightButtons()
 
+})
+
+powerBtn.addEventListener('click',() => {
+    if(powerOn === true){
+        powerOn = false
+    }else{
+        powerOn = true
+    }
+    console.log(powerOn)
 })
 
 
@@ -189,6 +192,7 @@ function gameLogic() {
             i = 0
             j = 0
             score += 1
+            scoreScreen.innerText = score
             compChooses()
             lightButtons()
             console.log(counter)
@@ -203,6 +207,8 @@ function gameLogic() {
         i = 0
         j = 0
         counter = 0
+
+        scoreScreen.innerText = 0
 
         if(score > highScore){
             highScore = score
