@@ -17,6 +17,8 @@ let highScoreScreen = document.querySelector('.js-screen2')
 let playerLight = document.querySelector('.js-player--light')
 let compLight = document.querySelector('.js-comp--light')
 let logoLight = document.querySelector('.js-game--logo')
+let powerTxtLight = document.querySelector('.js-power--txt')
+let startTxtLight = document.querySelector('.js-restart--txt')
 let compStoredColors = []
 let playerStoredColors = []
 let counter = 0;
@@ -71,6 +73,9 @@ powerBtn.addEventListener('click',() => {
         highScoreScreen.style.boxShadow = 'inset 0 0 5px red'
         playerLight.style.background = 'radial-gradient(rgb(255, 0, 0), rgb(0, 0, 0))'
         compLight.style.background = 'radial-gradient(rgb(255, 0, 0), rgb(0, 0, 0))'
+        logoLight.classList.add('js-light--active')
+        powerTxtLight.classList.add('js-light--active')
+        startTxtLight.classList.add('js-light--active')
 
         setTimeout(() => {
             startLights();
@@ -84,6 +89,9 @@ powerBtn.addEventListener('click',() => {
         compLight.style.background = null
         scoreScreen.style.boxShadow = null
         highScoreScreen.style.boxShadow = null
+        powerTxtLight.classList.remove('js-light--active')
+        logoLight.classList.remove('js-light--active')
+        startTxtLight.classList.remove('js-light--active')
 
         allButtons.forEach(function(btn){
             btn.style.backgroundColor = 'black'
@@ -100,6 +108,7 @@ powerBtn.addEventListener('click',() => {
 
 startGame.addEventListener('click', () => {
     if(powerOff === false && canClickStart == true){
+        startTxtLight.classList.remove('js-light--active')
         reset();
         styleReset();
         compChooses();
@@ -241,6 +250,7 @@ function gameOver() {
         playerLight.style.background = null
         compLight.style.background = null
         canClickStart = true
+        startTxtLight.classList.add('js-light--active')
     }, 1700);
 }
 
