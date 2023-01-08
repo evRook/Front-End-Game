@@ -214,7 +214,8 @@ body {
     height: 10px;
     width: 10px;
     border-radius: 50%;
-    background: radial-gradient(rgb(255, 0, 0), rgb(0, 0, 0));
+    border: 1px rgb(60, 60, 60) outset;
+    background: radial-gradient(rgb(100, 100, 100), rgb(0, 0, 0));
 }
 
 .comp--light__container {
@@ -236,7 +237,8 @@ body {
     height: 10px;
     width: 10px;
     border-radius: 50%;
-    background: radial-gradient(rgb(255, 0, 0), rgb(0, 0, 0));
+    border: 1px rgb(60, 60, 60) outset;
+    background: radial-gradient(rgb(100, 100, 100), rgb(0, 0, 0));
 }
 
 .game--logo {

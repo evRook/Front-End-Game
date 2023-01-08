@@ -14,6 +14,8 @@ let startGame = document.querySelector('.js-restart--btn')
 let powerBtn = document.querySelector('.js-power--btn')
 let scoreScreen = document.querySelector('.js-screen1')
 let highScoreScreen = document.querySelector('.js-screen2')
+let playerLight = document.querySelector('.js-player--light')
+let compLight = document.querySelector('.js-comp--light')
 let compStoredColors = []
 let playerStoredColors = []
 let counter = 0;
@@ -73,12 +75,12 @@ powerBtn.addEventListener('click',() => {
         n = 0
         scoreScreen.innerText = null
         highScoreScreen.innerText = null
+        playerLight.style.background = null
+        compLight.style.background = null
 
-        setTimeout(() => {
-            allButtons.forEach(function(btn){
-                btn.style.backgroundColor = 'black'
-                btn.style.borderColor = 'rgb(44, 44, 44)'
-            },100);
+        allButtons.forEach(function(btn){
+            btn.style.backgroundColor = 'black'
+            btn.style.borderColor = 'rgb(44, 44, 44)'
         });
     }
 
@@ -126,6 +128,9 @@ function startLights(){
             btn.style.backgroundColor = `darkgrey`
             btn.style.borderColor = `rgb(44, 44, 44)`
         });
+
+        playerLight.style.background = 'radial-gradient(rgb(255, 0, 0), rgb(0, 0, 0))'
+        compLight.style.background = 'radial-gradient(rgb(255, 0, 0), rgb(0, 0, 0))'
     },300);
 
     setTimeout(() => {
@@ -138,7 +143,9 @@ function startLights(){
                 startLights();
             }
         });
-    },600);
+        playerLight.style.background = null
+        compLight.style.background = null
+    },600); 
 }
 
 //turns btnColors into and array then pushes random value to new array to end of sequince
@@ -150,6 +157,8 @@ function compChooses(){
 function lightButtons() {
     canClickStart = false
     canClick = false
+    playerLight.style.background = null
+    compLight.style.background = 'radial-gradient(rgb(255, 0, 0), rgb(0, 0, 0))'
     function lightLoop() {
         
         setTimeout(() => {
@@ -167,6 +176,8 @@ function lightButtons() {
             }else{
                 canClick = true
                 canClickStart = true
+                playerLight.style.background = 'radial-gradient(rgb(255, 0, 0), rgb(0, 0, 0))'
+                compLight.style.background = null
             }
         }, 700);
     }
@@ -223,6 +234,8 @@ function gameOver() {
 
     setTimeout(() => {
         styleReset(); 
+        playerLight.style.background = null
+        compLight.style.background = null
         canClickStart = true
     }, 1700);
 }
