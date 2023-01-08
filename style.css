@@ -6,16 +6,21 @@ font-family: 'Righteous', cursive;
 font-family: 'Orbitron', sans-serif;
 */
 
-
+html {
+    min-height: 100%;
+    position: relative;
+}
 
 body {
-    background-color: darkgray;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom right,rgb(100, 100, 100), rgb(0, 0, 0));
 }
 
 .game--container {
     margin-right: auto;
     margin-left: auto;
-    margin-top: 100px;
+    margin-top: 60px;
     max-height: 650px;
     max-width: 650px;
 }
@@ -27,7 +32,7 @@ body {
     border: 16px rgb(44, 44, 44) outset;
     border-radius: 30%;
     background-color: rgb(15, 15, 15); 
-    box-shadow: 8px 15px 8px rgb(95, 95, 95);
+    box-shadow: 8px 15px 8px rgb(8, 8, 8);
     rotate: 15 1 10 10deg;
 }
 
@@ -43,6 +48,7 @@ body {
     border: 6px rgb(44, 44, 44) outset;
     border-radius: 40%;
     background-color: black;
+    box-shadow: 8px 19px 8px rgb(0, 0, 0);
 }
 
 .game--btn {
@@ -285,6 +291,17 @@ body {
     border-style: inset;
 }
 
+
+/* <div class="startScreen js-startScreen">
+            <div class="startScreen--content">
+                <div class="title__container">
+                    <p class="title">SIMON</p>
+                    <button class="startGame js-startGame">start</button>
+                    <div class="loading">
+                        <div class="dot1"></div>
+                        <div class="dot2"></div>
+                        <div class="dot3"></div> */
+
 .startScreen {
     display: block;
     position: fixed;
@@ -292,28 +309,53 @@ body {
     top: 0;
     width: 100%;
     height: 100%; 
-    background-color: white;
     font-family: 'Righteous', cursive;
+    background: linear-gradient(to bottom right,rgb(100, 100, 100), rgb(0, 0, 0));
 }
 
 .title__container {
-    border: 2px grey solid;
-    height: 500px;
-    width: 500px;
+    height: 300px;
+    width: 350px;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 100px;
+    margin-top: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
+.title {
+    margin-bottom: 10px;
+    font-size: 100px;
+    text-shadow: 2px 2px 5px lightseagreen;
+}
+
+.title:hover {
+    text-shadow: 2px 2px 5px darkred;
+    transition: 1s;
+}
+
+.title--content {
+    font-family: 'Bungee Hairline', cursive;
+    text-shadow: 0 0 white;
+}
+
 .startGame {
     margin-top: 50px;
-    border: 2px grey solid;
-    height: 20px;
-    width: 50px;
+    height: 50px;
+    width: 200px;
+    cursor: pointer;
+    color: lightseagreen;
+    font-size: 40px;
+    text-align: center;
+    text-shadow: 0 0 5px lightseagreen;
+    font-family: 'Bungee Hairline', cursive;
+}
+
+.startGame:hover {
+    transition: 1s;
+    text-shadow: 0 0 25px lightseagreen;
 }
 
 .footer--container {
@@ -331,6 +373,7 @@ body {
 .quit--btn {
     font-size: 50px;
     font-family: 'Bungee Hairline', cursive;
+    text-shadow: 0 0 2px white;
     cursor: pointer;
     rotate: -2deg;
 }
