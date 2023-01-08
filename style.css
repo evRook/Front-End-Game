@@ -37,6 +37,7 @@ body {
 
 .game--btn {
     background-image: url(/img/skin-side-up.png);
+    box-shadow: inset 0 0 100px black;
 }
 
 .game--btn:active {
@@ -52,7 +53,6 @@ body {
     border-bottom-right-radius: 15%;
     border: 5px darkred outset;
     background-color: darkred;
-    box-shadow: inset 0 0 100px black;
 }
 
 #redBtn:active {
@@ -69,7 +69,6 @@ body {
     border-bottom-right-radius: 10%;
     border: 5px darkblue outset;
     background-color: darkblue;
-    box-shadow: inset 0 0 100px black;
 }
 
 #blueBtn:active {
@@ -88,7 +87,6 @@ body {
     border-bottom-right-radius: 10%;
     border: 5px darkgreen outset;
     background-color: darkgreen;
-    box-shadow: inset 0 0 100px black;
 }
 
 #greenBtn:active {
@@ -107,7 +105,6 @@ body {
     border-bottom-right-radius: 100%;
     border: 5px darkgoldenrod outset;
     background-color: darkgoldenrod;
-    box-shadow: inset 0 0 100px black;
 }
 
 #goldenrodBtn:active:hover {
@@ -247,7 +244,6 @@ body {
     text-align: center;
     font-size: 30px;
     height: 30px;
-    background-color: rgb(15, 15, 15);
     color: transparent;
     text-shadow: 1px 1px rgba(65, 65, 65, 0.5);
 }

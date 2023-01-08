@@ -16,6 +16,7 @@ let scoreScreen = document.querySelector('.js-screen1')
 let highScoreScreen = document.querySelector('.js-screen2')
 let playerLight = document.querySelector('.js-player--light')
 let compLight = document.querySelector('.js-comp--light')
+let logoLight = document.querySelector('.js-game--logo')
 let compStoredColors = []
 let playerStoredColors = []
 let counter = 0;
@@ -66,6 +67,10 @@ powerBtn.addEventListener('click',() => {
     if(powerOff === true){
         reset();
         highScoreScreen.innerText = highScore
+        scoreScreen.style.boxShadow = 'inset 0 0 5px red'
+        highScoreScreen.style.boxShadow = 'inset 0 0 5px red'
+        playerLight.style.background = 'radial-gradient(rgb(255, 0, 0), rgb(0, 0, 0))'
+        compLight.style.background = 'radial-gradient(rgb(255, 0, 0), rgb(0, 0, 0))'
 
         setTimeout(() => {
             startLights();
@@ -77,6 +82,8 @@ powerBtn.addEventListener('click',() => {
         highScoreScreen.innerText = null
         playerLight.style.background = null
         compLight.style.background = null
+        scoreScreen.style.boxShadow = null
+        highScoreScreen.style.boxShadow = null
 
         allButtons.forEach(function(btn){
             btn.style.backgroundColor = 'black'
@@ -128,9 +135,6 @@ function startLights(){
             btn.style.backgroundColor = `darkgrey`
             btn.style.borderColor = `rgb(44, 44, 44)`
         });
-
-        playerLight.style.background = 'radial-gradient(rgb(255, 0, 0), rgb(0, 0, 0))'
-        compLight.style.background = 'radial-gradient(rgb(255, 0, 0), rgb(0, 0, 0))'
     },300);
 
     setTimeout(() => {
@@ -243,7 +247,6 @@ function gameOver() {
 function reset() {
     powerOff = false
     canClick = false
-    scoreScreen.innerText = 0
     compStoredColors = [];
     playerStoredColors = [];
     i = 0
