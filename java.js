@@ -30,6 +30,8 @@ let canClick = false
 let canClickStart = false
 let i = 0
 let n = 0
+let clickSound = new Audio()
+let menuSound = new Audio()
 let wrongSound = new Audio()
 let redSound = new Audio()
 let blueSound = new Audio()
@@ -60,7 +62,7 @@ startButton.addEventListener('click', () => {
     powerOff = true
     scoreScreen.innerText = null
 
-    redBtnSound()
+    menuClickSound()
 
     setTimeout(() => {
         startScreen.style.display = 'none'
@@ -74,6 +76,7 @@ startButton.addEventListener('click', () => {
 
 powerBtn.addEventListener('click',() => {
     if(powerOff === true){
+        buttonClickSound()
         reset();
         highScoreScreen.innerText = highScore
         scoreScreen.style.boxShadow = 'inset 0 0 5px red'
@@ -88,6 +91,7 @@ powerBtn.addEventListener('click',() => {
             startLights();
         }, 100);
     }else{
+        buttonClickSound()
         powerOff = true
         n = 0
         scoreScreen.innerText = null
@@ -115,6 +119,7 @@ powerBtn.addEventListener('click',() => {
 
 startGame.addEventListener('click', () => {
     if(powerOff === false && canClickStart == true){
+        buttonClickSound()
         startTxtLight.classList.remove('js-light--active')
         reset();
         styleReset();
@@ -140,6 +145,7 @@ buttons.addEventListener('click', (evt) => {
 });
 
 quit.addEventListener('click', () => {
+    menuClickSound()
     startScreen.style.display = 'block'
     highScoreScreen.innerText = null
     powerTxtLight.classList.remove('js-light--active')
@@ -344,4 +350,14 @@ function yellowBtnSound() {
         yellowSound.pause()
         yellowSound.currentTime = 0
     },500)
+}
+
+function menuClickSound() {
+    menuSound.src = 'audio/397599__nightflame__menu-fx-02.wav'
+    menuSound.play()
+}
+
+function buttonClickSound() {
+    clickSound.src = 'audio/475188__sheyvan__button-clicking-1.wav'
+    clickSound.play()
 }
