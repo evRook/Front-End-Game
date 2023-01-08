@@ -68,12 +68,11 @@ startButton.addEventListener('click', () => {
 
     setTimeout(() => {
         startScreen.style.display = 'none'
-    }, 100)
+    }, 100) // change this after adding loading dots
 
     allButtons.forEach(function(btn){
         btn.style.backgroundColor = 'black'
         btn.style.borderColor = 'rgb(44, 44, 44)'
-        console.log('test')
     })        
 })
 
@@ -83,15 +82,17 @@ quit.addEventListener('click', () => {
 
 
 restart.addEventListener('click', () => {
-    compStoredColors = [];
-    playerStoredColors = [];
-    i = 0
-    j = 0
-    counter = 0
-    score = 0
-    scoreScreen.innerText = 0
-    compChooses()
-    lightButtons()
+    if(powerOff === false){
+        compStoredColors = [];
+        playerStoredColors = [];
+        i = 0
+        j = 0
+        counter = 0
+        score = 0
+        scoreScreen.innerText = 0
+        compChooses()
+        lightButtons()
+    }
 })
 
 
@@ -99,7 +100,15 @@ powerBtn.addEventListener('click',() => {
     if(powerOff === true){
         powerOff = false
         scoreScreen.innerText = 0
+        compStoredColors = [];
+        playerStoredColors = [];
+        i = 0
+        j = 0
+        counter = 0
+        score = 0
+        scoreScreen.innerText = 0
         antiClick.style.display = 'block'
+
 
         function startLights(){
             setTimeout(() => {
@@ -127,6 +136,7 @@ powerBtn.addEventListener('click',() => {
         setTimeout(() => {
             startLights()
         }, 100)
+
     }else{
         powerOff = true
         n = 0
@@ -142,28 +152,31 @@ powerBtn.addEventListener('click',() => {
     }
     console.log(powerOff)
 
-    setTimeout((btn) => {
-        allButtons.forEach((btn) => {
-            n = 0
-            btn.style.backgroundColor = null
-            btn.style.borderColor = null
-            antiClick.style.display = 'none'
-        })
-    },1600)
+    if(powerOff === false){
+        setTimeout((btn) => {
+            allButtons.forEach((btn) => {
+                n = 0
+                btn.style.backgroundColor = null
+                btn.style.borderColor = null
+                antiClick.style.display = 'none'
+                compChooses()
+                lightButtons()
+            })
+        },1600)
+    }
 })
 
-
 // buttons.addEventListener('mouseover', () =>{
-//     allButtons.forEach((btn) => {
-//         btn.style.backgroundColor = null
-//         btn.style.borderColor = null
-//     })
+//     if(powerOff === false){
+//         allButtons.forEach((btn) => {
+//             btn.style.backgroundColor = null
+//             btn.style.borderColor = null
+//         })
+//     }   
 // })
 
-
-
 buttons.addEventListener('click', userInput = (evt) => {
-
+    if(powerOff === false){
     activeColor = evt.target.getAttribute('data-color')
     inactiveColor = evt.target.getAttribute('data-original')
 
@@ -180,19 +193,15 @@ buttons.addEventListener('click', userInput = (evt) => {
      
 
     gameLogic();
-
+    }
 })
 
 //turns btnColors into and array then pushes random value to new array
 function compChooses(){
-    
     let randomColor = Object.entries(btnColors)
     compStoredColors.push(randomColor[Math.floor(Math.random() * randomColor.length)])
-
 }
 
-
-// does not work with start button ~kinda
 function lightButtons() {
     function lightLoop() {
         
