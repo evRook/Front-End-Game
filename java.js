@@ -3,7 +3,9 @@
 //  -remove start reset: have it only open page: power button is new start button
 //  -fix power button edge case
 //  -fix class names so theyre easier to follow
-//  - if time after loss add no color pause before rest style
+//  -if time: after loss add no color pause before rest style
+//  -change start up color to light blue
+//
 
 let buttons = document.querySelector('.js-game--btn__container')
 let allButtons = document.querySelectorAll('.js-game--btn')
@@ -57,7 +59,7 @@ startButton.addEventListener('click', () => {
 
     setTimeout(() => {
         startScreen.style.display = 'none'
-    }, 100); // change this after adding loading dots
+    }, 100);
 
     allButtons.forEach((btn) => {
         btn.style.backgroundColor = 'black'
@@ -149,7 +151,7 @@ quit.addEventListener('click', () => {
 function startLights(){
     setTimeout(() => {
         allButtons.forEach((btn) => {
-            btn.style.backgroundColor = `darkgrey`
+            btn.style.backgroundColor = `rgb(57, 74, 98)`
             btn.style.borderColor = `rgb(44, 44, 44)`
         });
     },300);

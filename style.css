@@ -329,6 +329,7 @@ body {
     margin-bottom: 10px;
     font-size: 100px;
     text-shadow: 2px 2px 5px lightseagreen;
+    transition: 1s;
 }
 
 .title:hover {
@@ -351,10 +352,12 @@ body {
     text-align: center;
     text-shadow: 0 0 5px lightseagreen;
     font-family: 'Bungee Hairline', cursive;
+    transition: 1s;
 }
 
 .startGame:hover {
     transition: 1s;
+    color: lightseagreen;
     text-shadow: 0 0 25px lightseagreen;
 }
 
@@ -380,5 +383,5 @@ body {
 
 .js-light--active {
     color: rgba(240, 65, 65, 0.5);
-    text-shadow: 0 0 10px rgba(255, 65, 65, 0.5);
+    text-shadow: 0 0 7px rgba(255, 65, 65, 0.5);
 }
