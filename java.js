@@ -134,6 +134,14 @@ buttons.addEventListener('click', (evt) => {
 
 quit.addEventListener('click', () => {
     startScreen.style.display = 'block'
+    highScoreScreen.innerText = null
+    powerTxtLight.classList.remove('js-light--active')
+    logoLight.classList.remove('js-light--active')
+    startTxtLight.classList.remove('js-light--active')
+    scoreScreen.style.boxShadow = null
+    highScoreScreen.style.boxShadow = null
+
+    powerOff = true
 });
 
 

@@ -173,8 +173,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: red;
-    text-shadow: 0 0 10px rgba(255, 0, 0, 1);
+    color: rgba(255, 0, 0, 0.5);
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
     border: 2px darkred ridge;
     background-color: rgb(84, 0, 0);
     background-image: url(/img/pyramid.png);
@@ -314,6 +314,25 @@ body {
     border: 2px grey solid;
     height: 20px;
     width: 50px;
+}
+
+.footer--container {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    z-index: -1;
+}
+
+.quit--btn__container {
+    margin-left: 100px;
+}
+
+.quit--btn {
+    font-size: 50px;
+    font-family: 'Bungee Hairline', cursive;
+    cursor: pointer;
+    rotate: -2deg;
 }
 
 .js-light--active {
