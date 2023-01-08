@@ -24,7 +24,8 @@ let startScreen = document.querySelector('.startScreen')
 let quit = document.querySelector('.quit--btn')
 let startGame = document.querySelector('.restart--btn')
 let powerBtn = document.querySelector('.power--btn')
-let scoreScreen = document.querySelector('.score--screen')
+let scoreScreen = document.querySelector('.js-screen1')
+let highScoreScreen = document.querySelector('.js-screen2')
 let compStoredColors = []
 let playerStoredColors = []
 let counter = 0;
@@ -56,8 +57,6 @@ let btnColors = {
     },
 }
 
-
-
 //Opens game// makes sure game is off
 startButton.addEventListener('click', () => {
     powerOff = true
@@ -76,6 +75,7 @@ startButton.addEventListener('click', () => {
 powerBtn.addEventListener('click',() => {
     if(powerOff === true){
         reset();
+        highScoreScreen.innerText = highScore
 
         setTimeout(() => {
             startLights();
@@ -84,6 +84,7 @@ powerBtn.addEventListener('click',() => {
         powerOff = true
         n = 0
         scoreScreen.innerText = null
+        highScoreScreen.innerText = null
 
         setTimeout(() => {
             allButtons.forEach(function(btn){
@@ -92,7 +93,7 @@ powerBtn.addEventListener('click',() => {
             },100);
         });
     }
-    
+
     if(powerOff === false){
             n = 0
         setTimeout((btn) => {
@@ -201,6 +202,7 @@ function gameLogic() {
     }else{
         if(score > highScore){
             highScore = score
+            highScoreScreen.innerText = highScore
         }
         reset();
         gameOver();
