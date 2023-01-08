@@ -1,3 +1,10 @@
+/* font-family: 'Bungee Hairline', cursive;
+font-family: 'Lato', sans-serif;
+font-family: 'Noto Sans Symbols 2', sans-serif;
+font-family: 'Righteous', cursive; */
+
+
+
 body {
     background-color: darkgray;
 }
@@ -144,9 +151,7 @@ body {
 .power--txt {
     margin: 0 0 5px 0;
     font-size: 20px;
-    background-color: rgb(15, 15, 15);
-    color: transparent;
-    text-shadow: .5px .5px .5px rgba(65, 65, 65, 1);
+    color: rgba(95, 95, 95, 0.5);
 }
 
 .control--pannel--center {
@@ -180,9 +185,8 @@ body {
     margin-top: 0;
     text-align: center;
     font-size: 13px;
-    background-color: rgb(15, 15, 15);
-    color: transparent;
-    text-shadow: .5px .5px .5px rgba(65, 65, 65, 1);
+    font-family: -webkit-'Noto Sans Symbols 2';
+    color: rgba(135, 135, 135, 0.5);
 }
 
 .turn--light__container {
@@ -202,9 +206,7 @@ body {
     margin-bottom: 8px;
     margin-top: 8px;
     font-size: 13px;
-    background-color: rgb(15, 15, 15);
-    color: transparent;
-    text-shadow: .5px .5px .5px rgba(65, 65, 65, 1);
+    color: rgba(135, 135, 135, 0.5);
 }
 
 .player--light {
@@ -225,9 +227,7 @@ body {
     margin-bottom: 8px;
     margin-top: 8px;
     font-size: 13px;
-    background-color: rgb(15, 15, 15);
-    color: transparent;
-    text-shadow: .5px .5px .5px rgba(65, 65, 65, 1);
+    color: rgba(135, 135, 135, 0.5);
 }
 
 .comp--light {
@@ -244,8 +244,7 @@ body {
     text-align: center;
     font-size: 30px;
     height: 30px;
-    color: transparent;
-    text-shadow: 1px 1px rgba(65, 65, 65, 0.5);
+    color: rgba(65, 65, 65, 0.5);
 }
 
 .restart--container {
@@ -261,8 +260,7 @@ body {
     margin: 0 0 5px 0;
     font-size: 20px;
     background-color: rgb(15, 15, 15);
-    color: transparent;
-    text-shadow: .5px .5px .5px rgba(65, 65, 65, 1);
+    color: rgba(95, 95, 95, 0.5);
 }
 
 .restart--btn {
