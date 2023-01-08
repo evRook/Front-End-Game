@@ -1,10 +1,8 @@
 // TO-DO :
 //  -add sounds
-//  -remove start reset: have it only open page: power button is new start button
 //  -fix power button edge case
 //  -fix class names so theyre easier to follow
 //  -if time: after loss add no color pause before rest style
-//  -change start up color to light blue
 //
 
 let buttons = document.querySelector('.js-game--btn__container')
@@ -32,6 +30,11 @@ let canClick = false
 let canClickStart = false
 let i = 0
 let n = 0
+let wrongSound = new Audio()
+let redSound = new Audio()
+let blueSound = new Audio()
+let greenSound = new Audio()
+let yellowSound = new Audio()
 
 let btnColors = {
     red: {
@@ -56,6 +59,8 @@ let btnColors = {
 startButton.addEventListener('click', () => {
     powerOff = true
     scoreScreen.innerText = null
+
+    redBtnSound()
 
     setTimeout(() => {
         startScreen.style.display = 'none'
@@ -188,9 +193,22 @@ function lightButtons() {
             let getButton = document.getElementById(`${compStoredColors[i][0]}Btn`);
             let activeColor = `${compStoredColors[i][1].active}`
             getButton.style.backgroundColor = `${activeColor}`
+
+            if(activeColor == 'red'){
+                redBtnSound()
+            }else if(activeColor == 'blue'){
+                blueBtnSound()
+            }else if(activeColor == 'green'){
+                greenBtnSound()
+            }else if(activeColor == 'goldenrod'){
+                yellowBtnSound()
+            }
+
+            // console.log(activeColor)
+
             i++
             timer = i
-        }, 400);
+        }, 300);
 
         setTimeout(() => {
             styleReset();          
@@ -202,7 +220,7 @@ function lightButtons() {
                 playerLight.style.background = 'radial-gradient(rgb(255, 0, 0), rgb(0, 0, 0))'
                 compLight.style.background = null
             }
-        }, 700);
+        }, 600);
     }
     lightLoop();
 }
@@ -224,6 +242,7 @@ function gameLogic() {
             highScore = score
             highScoreScreen.innerText = highScore
         }
+        wrongAnswerSound();
         reset();
         gameOver();
     }
@@ -280,4 +299,49 @@ function styleReset() {
         btn.style.backgroundColor = null
         btn.style.borderColor = null
     }) 
+}
+
+function wrongAnswerSound() {
+    wrongSound.src = 'audio/156859__multimax2121__button-1.wav'
+    wrongSound.play()
+
+    setTimeout(() => {
+
+    })
+}
+
+function redBtnSound() {
+    redSound.src = 'audio/Button1.wav'
+    redSound.play()
+    setTimeout(() => {
+        redSound.pause()
+        redSound.currentTime = 0
+    },500)
+}
+
+function blueBtnSound() {
+    blueSound.src = 'audio/Button2.wav'
+    blueSound.play()
+    setTimeout(() => {
+        blueSound.pause()
+        blueSound.currentTime = 0
+    },500)
+}
+
+function greenBtnSound() {
+    greenSound.src = 'audio/Button4.wav'
+    greenSound.play()
+    setTimeout(() => {
+        greenSound.pause()
+        greenSound.currentTime = 0
+    },500)
+}
+
+function yellowBtnSound() {
+    yellowSound.src = 'audio/Button5.wav'
+    yellowSound.play()
+    setTimeout(() => {
+        yellowSound.pause()
+        yellowSound.currentTime = 0
+    },500)
 }
