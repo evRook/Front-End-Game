@@ -16,14 +16,13 @@
 
 
 
-let buttons = document.querySelector('.game--btn__container')
-let allButtons = document.querySelectorAll('.game--btn')
-let startButton = document.querySelector('.startGame')
-let antiClick = document.querySelector('.antiClick')
-let startScreen = document.querySelector('.startScreen')
-let quit = document.querySelector('.quit--btn')
-let startGame = document.querySelector('.restart--btn')
-let powerBtn = document.querySelector('.power--btn')
+let buttons = document.querySelector('.js-game--btn__container')
+let allButtons = document.querySelectorAll('.js-game--btn')
+let startButton = document.querySelector('.js-startGame')
+let startScreen = document.querySelector('.js-startScreen')
+let quit = document.querySelector('.js-quit--btn')
+let startGame = document.querySelector('.js-restart--btn')
+let powerBtn = document.querySelector('.js-power--btn')
 let scoreScreen = document.querySelector('.js-screen1')
 let highScoreScreen = document.querySelector('.js-screen2')
 let compStoredColors = []
