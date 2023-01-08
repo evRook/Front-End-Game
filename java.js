@@ -10,7 +10,7 @@
 //  -connect score to html
 //  -connect high score to html
 //      -need to be created
-//  
+//  - condense object.entries to one let var
 
 
 
@@ -27,15 +27,18 @@ let powerBtn = document.querySelector('.power--btn')
 let scoreScreen = document.querySelector('.score--screen')
 let compStoredColors = []
 let playerStoredColors = []
+let getButtonColors;
 let activeColor;
 let inactiveColor;
 let counter = 0;
 let score = 0;
 let highScore = 0;
 let timer = '';
-let powerOn = false
+let powerOff = true
 let i = 0
 let j = 0
+let n = 0
+
 
 let btnColors = {
     red: {
@@ -60,40 +63,125 @@ let btnColors = {
 
 //START GAME: clears data and has computer coose
 startButton.addEventListener('click', () => {
+    powerOff = true
+    scoreScreen.innerText = null
 
-    startScreen.style.display = 'none'
-    // antiClick.style.display = 'block'
+    setTimeout(() => {
+        startScreen.style.display = 'none'
+    }, 100)
 
+    allButtons.forEach(function(btn){
+        btn.style.backgroundColor = 'black'
+        btn.style.borderColor = 'rgb(44, 44, 44)'
+        console.log('test')
+    })        
 })
 
 quit.addEventListener('click', () => {
-
     startScreen.style.display = 'block'
-
 })
 
-restart.addEventListener('click', () => {
 
+restart.addEventListener('click', () => {
     compStoredColors = [];
     playerStoredColors = [];
     i = 0
     j = 0
     counter = 0
     score = 0
+    scoreScreen.innerText = 0
     compChooses()
     lightButtons()
-
 })
+
 
 powerBtn.addEventListener('click',() => {
-    if(powerOn === true){
-        powerOn = false
+    if(powerOff === true){
+        powerOff = false
+        scoreScreen.innerText = 0
+        antiClick.style.display = 'block'
+
+        function startLights(){
+            setTimeout(() => {
+                allButtons.forEach((btn) => {
+                    
+                    btn.style.backgroundColor = `darkgrey`
+                    btn.style.borderColor = `rgb(44, 44, 44)`
+                })
+            },300)
+
+            setTimeout(() => {
+                allButtons.forEach((btn) => {
+
+                    btn.style.backgroundColor = `black`
+                    btn.style.borderColor = `rgb(44, 44, 44)`
+                    
+                    if(n < 4){
+                        n++
+                        startLights()
+                    }
+
+                })
+            },600)
+        }
+        setTimeout(() => {
+            startLights()
+        }, 100)
     }else{
-        powerOn = true
+        powerOff = true
+        n = 0
+        scoreScreen.innerText = null
+
+        setTimeout(() => {
+            allButtons.forEach(function(btn){
+                btn.style.backgroundColor = 'black'
+                btn.style.borderColor = 'rgb(44, 44, 44)'
+                console.log('test')
+            },100)
+        })
     }
-    console.log(powerOn)
+    console.log(powerOff)
+
+    setTimeout((btn) => {
+        allButtons.forEach((btn) => {
+            n = 0
+            btn.style.backgroundColor = null
+            btn.style.borderColor = null
+            antiClick.style.display = 'none'
+        })
+    },1600)
 })
 
+
+// buttons.addEventListener('mouseover', () =>{
+//     allButtons.forEach((btn) => {
+//         btn.style.backgroundColor = null
+//         btn.style.borderColor = null
+//     })
+// })
+
+
+
+buttons.addEventListener('click', userInput = (evt) => {
+
+    activeColor = evt.target.getAttribute('data-color')
+    inactiveColor = evt.target.getAttribute('data-original')
+
+    playerStoredColors.push(activeColor)
+
+    evt.target.style.backgroundColor = `${activeColor}`
+
+    antiClick.style.display = 'block'
+
+    setTimeout(() => {
+        evt.target.style.backgroundColor = `${inactiveColor}`
+        antiClick.style.display = 'none'
+    }, 150)
+     
+
+    gameLogic();
+
+})
 
 //turns btnColors into and array then pushes random value to new array
 function compChooses(){
@@ -149,37 +237,6 @@ function lightButtons() {
     
 }
 
-
-// clicking too fast changes backgrounds to wrong color
-buttons.addEventListener('click', userInput = (evt) => {
-
-    activeColor = evt.target.getAttribute('data-color')
-    inactiveColor = evt.target.getAttribute('data-original')
-
-    playerStoredColors.push(activeColor)
-
-    evt.target.style.backgroundColor = `${activeColor}`
-
-    antiClick.style.display = 'block'
-
-    setTimeout(() => {
-        evt.target.style.backgroundColor = `${inactiveColor}`
-        antiClick.style.display = 'none'
-    }, 150)
-     
-
-    gameLogic();
-
-})
-
-buttons.addEventListener('mouseover', () =>{
-    allButtons.forEach((btn) => {
-        btn.style.backgroundColor = null
-        btn.style.borderColor = null
-    })
-})
-
-
 // works? needs game over : not stress tested
 function gameLogic() {
     if(compStoredColors[counter][0] === playerStoredColors[counter]){
@@ -208,8 +265,6 @@ function gameLogic() {
         j = 0
         counter = 0
 
-        scoreScreen.innerText = 0
-
         if(score > highScore){
             highScore = score
         }
@@ -231,7 +286,7 @@ function gameOver() {
             allButtons.forEach((btn) => {
 
                 btn.style.backgroundColor = 'red' 
-                btn.style.borderColor = 'red'
+                btn.style.borderColor = 'darkred'
             
             })
         }, 300)
@@ -240,7 +295,7 @@ function gameOver() {
             allButtons.forEach((btn) => {
 
                 btn.style.backgroundColor = 'darkred' 
-                btn.style.borderColor = 'darkred'
+                // btn.style.borderColor = 'darkred'
                 
                 if(m<5){
                     m++
@@ -265,3 +320,4 @@ function gameOver() {
     }, 1700)
 
 }
+
