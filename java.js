@@ -33,6 +33,7 @@ let highScore = 0;
 let timer = 0;
 let powerOff = true
 let canClick = false
+let canClickStart = false
 let i = 0
 let n = 0
 
@@ -57,7 +58,7 @@ let btnColors = {
 
 
 
-//START GAME: clears data and has computer coose
+//Opens game// makes sure game is off
 startButton.addEventListener('click', () => {
     powerOff = true
     scoreScreen.innerText = null
@@ -72,19 +73,6 @@ startButton.addEventListener('click', () => {
     });    
 });
 
-startGame.addEventListener('click', () => {
-    if(powerOff === false){
-        reset();
-        styleReset();
-        compChooses();
-        lightButtons();
-    }
-});
-
-quit.addEventListener('click', () => {
-    startScreen.style.display = 'block'
-});
-
 powerBtn.addEventListener('click',() => {
     if(powerOff === true){
         reset();
@@ -92,7 +80,6 @@ powerBtn.addEventListener('click',() => {
         setTimeout(() => {
             startLights();
         }, 100);
-
     }else{
         powerOff = true
         n = 0
@@ -105,12 +92,22 @@ powerBtn.addEventListener('click',() => {
             },100);
         });
     }
-
+    
     if(powerOff === false){
             n = 0
         setTimeout((btn) => {
             styleReset();
         },1600);
+        canClickStart = true
+    }
+});
+
+startGame.addEventListener('click', () => {
+    if(powerOff === false && canClickStart == true){
+        reset();
+        styleReset();
+        compChooses();
+        lightButtons();
     }
 });
 
@@ -130,6 +127,9 @@ buttons.addEventListener('click', (evt) => {
     }
 });
 
+quit.addEventListener('click', () => {
+    startScreen.style.display = 'block'
+});
 
 
 function startLights(){
@@ -159,13 +159,15 @@ function compChooses(){
     compStoredColors.push(randomColor[Math.floor(Math.random() * randomColor.length)]);
 }
 
+
 function lightButtons() {
+    canClickStart = false
+    canClick = false
     function lightLoop() {
         
         setTimeout(() => {
-            canClick = false
             let getButton = document.getElementById(`${compStoredColors[i][0]}Btn`);
-            activeColor = `${compStoredColors[i][1].active}`
+            let activeColor = `${compStoredColors[i][1].active}`
             getButton.style.backgroundColor = `${activeColor}`
             i++
             timer = i
@@ -177,11 +179,11 @@ function lightButtons() {
                 lightLoop();
             }else{
                 canClick = true
+                canClickStart = true
             }
         }, 1200 - (timer * 20));
     }
     lightLoop();
-    
 }
 
 function gameLogic() {
@@ -233,6 +235,7 @@ function gameOver() {
 
     setTimeout(() => {
         styleReset(); 
+        canClickStart = true
     }, 1700);
 }
 
