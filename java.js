@@ -22,19 +22,17 @@ let startButton = document.querySelector('.startGame')
 let antiClick = document.querySelector('.antiClick')
 let startScreen = document.querySelector('.startScreen')
 let quit = document.querySelector('.quit--btn')
-let restart = document.querySelector('.restart--btn')
+let startGame = document.querySelector('.restart--btn')
 let powerBtn = document.querySelector('.power--btn')
 let scoreScreen = document.querySelector('.score--screen')
 let compStoredColors = []
 let playerStoredColors = []
-let getButtonColors;
-let activeColor;
-let inactiveColor;
 let counter = 0;
 let score = 0;
 let highScore = 0;
 let timer = 0;
 let powerOff = true
+let canClick = false
 let i = 0
 let n = 0
 
@@ -66,34 +64,34 @@ startButton.addEventListener('click', () => {
 
     setTimeout(() => {
         startScreen.style.display = 'none'
-    }, 100) // change this after adding loading dots
+    }, 100); // change this after adding loading dots
 
     allButtons.forEach((btn) => {
         btn.style.backgroundColor = 'black'
         btn.style.borderColor = 'rgb(44, 44, 44)'
-    })        
-})
+    });    
+});
 
-restart.addEventListener('click', () => {
+startGame.addEventListener('click', () => {
     if(powerOff === false){
         reset();
-        compChooses()
-        lightButtons()
+        styleReset();
+        compChooses();
+        lightButtons();
     }
-})
+});
 
 quit.addEventListener('click', () => {
     startScreen.style.display = 'block'
-})
+});
 
 powerBtn.addEventListener('click',() => {
     if(powerOff === true){
-        reset()
-        antiClick.style.display = 'block'
+        reset();
 
         setTimeout(() => {
-            startLights()
-        }, 100)
+            startLights();
+        }, 100);
 
     }else{
         powerOff = true
@@ -104,40 +102,33 @@ powerBtn.addEventListener('click',() => {
             allButtons.forEach(function(btn){
                 btn.style.backgroundColor = 'black'
                 btn.style.borderColor = 'rgb(44, 44, 44)'
-                console.log('test')
-            },100)
-        })
+            },100);
+        });
     }
 
     if(powerOff === false){
             n = 0
         setTimeout((btn) => {
-            allButtons.forEach((btn) => {
-                btn.style.backgroundColor = null
-                btn.style.borderColor = null
-                antiClick.style.display = 'none'
-            })
-        },1600)
+            styleReset();
+        },1600);
     }
-})
+});
 
 buttons.addEventListener('click', (evt) => {
-    if(powerOff === false){
-    activeColor = evt.target.getAttribute('data-color')
-    inactiveColor = evt.target.getAttribute('data-original')
+    if(powerOff === false && canClick === true){
+    let activeColor = evt.target.getAttribute('data-color')
+    let inactiveColor = evt.target.getAttribute('data-original')
 
-    playerStoredColors.push(activeColor)
+    playerStoredColors.push(activeColor);
     evt.target.style.backgroundColor = `${activeColor}`
-    antiClick.style.display = 'block'
 
     setTimeout(() => {
         evt.target.style.backgroundColor = `${inactiveColor}`
-        antiClick.style.display = 'none'
-    }, 150)
+    }, 150);
 
     gameLogic();
     }
-})
+});
 
 
 
@@ -146,8 +137,8 @@ function startLights(){
         allButtons.forEach((btn) => {
             btn.style.backgroundColor = `darkgrey`
             btn.style.borderColor = `rgb(44, 44, 44)`
-        })
-    },300)
+        });
+    },300);
 
     setTimeout(() => {
         allButtons.forEach((btn) => {
@@ -156,62 +147,56 @@ function startLights(){
             
             if(n<3){
                 n++
-                startLights()
+                startLights();
             }
-        })
-    },600)
+        });
+    },600);
 }
 
 //turns btnColors into and array then pushes random value to new array
 function compChooses(){
-    let randomColor = Object.entries(btnColors)
-    compStoredColors.push(randomColor[Math.floor(Math.random() * randomColor.length)])
+    let randomColor = Object.entries(btnColors);
+    compStoredColors.push(randomColor[Math.floor(Math.random() * randomColor.length)]);
 }
 
 function lightButtons() {
     function lightLoop() {
         
         setTimeout(() => {
-            antiClick.style.display = 'block'
-            let getButton = document.getElementById(`${compStoredColors[i][0]}Btn`)
+            canClick = false
+            let getButton = document.getElementById(`${compStoredColors[i][0]}Btn`);
             activeColor = `${compStoredColors[i][1].active}`
             getButton.style.backgroundColor = `${activeColor}`
             i++
             timer = i
-        }, 800 - (timer * 20))
+        }, 800 - (timer * 20));
 
         setTimeout(() => {
-            allButtons.forEach((btn) => {
-                btn.style.backgroundColor = null
-                btn.style.borderColor = null
-            })           
-            
+            styleReset();          
             if(i < compStoredColors.length){
-                lightLoop()
+                lightLoop();
             }else{
-                antiClick.style.display = 'none'
+                canClick = true
             }
-        }, 1200 - (timer * 20))
+        }, 1200 - (timer * 20));
     }
-    lightLoop()
+    lightLoop();
     
 }
 
-// works? needs game over : not stress tested
 function gameLogic() {
     if(compStoredColors[counter][0] === playerStoredColors[counter]){
-        counter += 1
+        counter += 1;
         if(compStoredColors.length === counter){
-            playerStoredColors = []
-            counter = 0
-            i = 0
-            score += 1
+            playerStoredColors = [];
+            counter = 0;
+            i = 0;
+            score += 1;
             scoreScreen.innerText = score
-            compChooses()
-            lightButtons()
+            compChooses();
+            lightButtons();
         }
     }else{
-
         if(score > highScore){
             highScore = score
         }
@@ -224,13 +209,13 @@ function gameOver() {
     let m = 0 
     function gameOverLights() {
         setTimeout(() => {
-            antiClick.style.display = 'block'
+            canClick = false
 
             allButtons.forEach((btn) => {
                 btn.style.backgroundColor = 'red' 
                 btn.style.borderColor = 'darkred'
-            })
-        }, 300)
+            });
+        }, 300);
 
         setTimeout(() => {
             allButtons.forEach((btn) => {
@@ -239,24 +224,21 @@ function gameOver() {
                 
                 if(m<5){
                     m++
-                    gameOverLights()
+                    gameOverLights();
                 }
-            })
-        }, 500)
+            });
+        }, 500);
     }
-    gameOverLights()
+    gameOverLights();
 
     setTimeout(() => {
-        allButtons.forEach((btn) => {
-            btn.style.backgroundColor = null
-            btn.style.borderColor = null
-            antiClick.style.display = 'none'
-        })  
-    }, 1700)
+        styleReset(); 
+    }, 1700);
 }
 
 function reset() {
     powerOff = false
+    canClick = false
     scoreScreen.innerText = 0
     compStoredColors = [];
     playerStoredColors = [];
@@ -264,4 +246,11 @@ function reset() {
     counter = 0
     score = 0
     scoreScreen.innerText = 0
+}
+
+function styleReset() {
+    allButtons.forEach((btn) => {
+        btn.style.backgroundColor = null
+        btn.style.borderColor = null
+    }) 
 }
