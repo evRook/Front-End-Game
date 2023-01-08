@@ -118,8 +118,8 @@ powerBtn.addEventListener('click',() => {
 });
 
 startGame.addEventListener('click', () => {
-    if(powerOff === false && canClickStart == true){
         buttonClickSound()
+    if(powerOff === false && canClickStart == true){
         startTxtLight.classList.remove('js-light--active')
         reset();
         styleReset();
@@ -308,12 +308,8 @@ function styleReset() {
 }
 
 function wrongAnswerSound() {
-    wrongSound.src = 'audio/156859__multimax2121__button-1.wav'
+    wrongSound.src = 'audio/Incorrect.wav'
     wrongSound.play()
-
-    setTimeout(() => {
-
-    })
 }
 
 function redBtnSound() {
@@ -353,11 +349,11 @@ function yellowBtnSound() {
 }
 
 function menuClickSound() {
-    menuSound.src = 'audio/397599__nightflame__menu-fx-02.wav'
+    menuSound.src = 'audio/Menu.wav'
     menuSound.play()
 }
 
 function buttonClickSound() {
-    clickSound.src = 'audio/475188__sheyvan__button-clicking-1.wav'
+    clickSound.src = 'audio/ButtonClick.wav'
     clickSound.play()
 }
