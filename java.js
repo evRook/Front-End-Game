@@ -1,20 +1,9 @@
 // TO-DO :
-//  -change all classes to js-classes
-//  -change colors to hex code
-//  -chage button colors to proper positions
 //  -add sounds
-//  -connect power button
-//      -add fashing to power button
-//      -add rest and functionality to power button
 //  -remove start reset: have it only open page: power button is new start button
-//  -connect score to html
-//  -connect high score to html
-//      -need to be created
-//  - condense object.entries to one let var
-
-
-
-
+//  -fix power button edge case
+//  -fix class names so theyre easier to follow
+//  - if time after loss add no color pause before rest style
 
 let buttons = document.querySelector('.js-game--btn__container')
 let allButtons = document.querySelectorAll('.js-game--btn')
@@ -95,9 +84,7 @@ powerBtn.addEventListener('click',() => {
 
     if(powerOff === false){
             n = 0
-        setTimeout((btn) => {
-            styleReset();
-        },1600);
+        setTimeout(styleReset,1600);
         canClickStart = true
     }
 });
@@ -132,6 +119,7 @@ quit.addEventListener('click', () => {
 });
 
 
+
 function startLights(){
     setTimeout(() => {
         allButtons.forEach((btn) => {
@@ -153,12 +141,11 @@ function startLights(){
     },600);
 }
 
-//turns btnColors into and array then pushes random value to new array
+//turns btnColors into and array then pushes random value to new array to end of sequince
 function compChooses(){
     let randomColor = Object.entries(btnColors);
     compStoredColors.push(randomColor[Math.floor(Math.random() * randomColor.length)]);
 }
-
 
 function lightButtons() {
     canClickStart = false
@@ -171,7 +158,7 @@ function lightButtons() {
             getButton.style.backgroundColor = `${activeColor}`
             i++
             timer = i
-        }, 800 - (timer * 20));
+        }, 400);
 
         setTimeout(() => {
             styleReset();          
@@ -181,7 +168,7 @@ function lightButtons() {
                 canClick = true
                 canClickStart = true
             }
-        }, 1200 - (timer * 20));
+        }, 700);
     }
     lightLoop();
 }
