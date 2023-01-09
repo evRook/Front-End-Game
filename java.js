@@ -126,6 +126,7 @@ startGame.addEventListener('click', () => {
 });
 
 buttons.addEventListener('click', (evt) => {
+    buttonClickSound()
     if(powerOff === false && canClick === true){
     let activeColor = evt.target.getAttribute('data-color')
     let inactiveColor = evt.target.getAttribute('data-original')
