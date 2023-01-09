@@ -12,6 +12,7 @@ let compLight = document.querySelector('.js-comp--light')
 let logoLight = document.querySelector('.js-game--logo')
 let powerTxtLight = document.querySelector('.js-power--txt')
 let startTxtLight = document.querySelector('.js-restart--txt')
+let info = document.querySelector('.js-modal--btn')
 let compStoredColors = []
 let playerStoredColors = []
 let counter = 0;
@@ -150,6 +151,10 @@ quit.addEventListener('click', () => {
     powerOff = true
 });
 
+info.addEventListener('click', () => {
+    menuClickSound()
+    console.log('clicked')
+})
 
 
 function startLights(){

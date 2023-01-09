@@ -8,6 +8,7 @@ font-family: 'Orbitron', sans-serif;
 
 html {
     min-height: 100%;
+    min-width: 600px;
     position: relative;
 }
 
@@ -298,6 +299,7 @@ body {
     height: 100%; 
     font-family: 'Righteous', cursive;
     background: linear-gradient(to bottom right,#282828, #000000);
+    z-index: 1;
 }
 
 .title__container {
@@ -351,19 +353,33 @@ body {
 .footer--container {
     position: fixed;
     left: 0;
-    bottom: 0;
+    top: 0;
     height: 100px;
-    z-index: -1;
+    z-index: 0;
 }
 
 .quit--btn__container {
-    margin-left: 100px;
+    display: flex;
+    margin-top: 10px;
+    margin-left: 45px;
 }
 
 .quit--btn {
-    font-size: 50px;
+    font-size: 40px;
     font-family: 'Bungee Hairline', cursive;
     text-shadow: 0 0 2px #FFFFFF;
+    cursor: pointer;
+    rotate: -2deg;
+}
+
+.modal--btn {
+    width: 20px;
+    margin-left: 50px;
+    margin-top: 10px;
+    font-size: 30px;
+    font-family: 'Bungee Hairline', cursive;
+    color: #383838;
+    text-shadow: 0 0 1px #FFFFFF;
     cursor: pointer;
     rotate: -2deg;
 }
