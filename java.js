@@ -12,7 +12,9 @@ let compLight = document.querySelector('.js-comp--light')
 let logoLight = document.querySelector('.js-game--logo')
 let powerTxtLight = document.querySelector('.js-power--txt')
 let startTxtLight = document.querySelector('.js-restart--txt')
-let info = document.querySelector('.js-modal--btn')
+let info = document.querySelector('.js-info--modal__container')
+let infoBtn = document.querySelector('.js-modal--btn')
+let infoClose = document.querySelector('.js-info--modal--close')
 let compStoredColors = []
 let playerStoredColors = []
 let counter = 0;
@@ -22,6 +24,7 @@ let timer = 0;
 let powerOff = true
 let canClick = false
 let canClickStart = false
+let modalOpen = false
 let i = 0
 let n = 0
 let clickSound = new Audio()
@@ -147,14 +150,28 @@ quit.addEventListener('click', () => {
     startTxtLight.classList.remove('js-light--active')
     scoreScreen.style.boxShadow = null
     highScoreScreen.style.boxShadow = null
-
+    info.style.display = 'none'
+    modalOpen = false
     powerOff = true
 });
 
-info.addEventListener('click', () => {
+infoBtn.addEventListener('click', () => {
     menuClickSound()
-    console.log('clicked')
-})
+
+    if(modalOpen === false){
+        info.style.display = 'block'
+        modalOpen = true
+    }else{
+        info.style.display = 'none'
+        modalOpen = false
+    }
+});
+
+infoClose.addEventListener('click', () => {
+    menuClickSound()
+    info.style.display = 'none'
+    modalOpen = false
+});
 
 
 function startLights(){
