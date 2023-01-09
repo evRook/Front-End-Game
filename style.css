@@ -55,6 +55,7 @@ body {
 .game--btn {
     background-image: url(img/skin-side-up.png);
     box-shadow: inset 0 0 100px #000000;
+    cursor: pointer;
 }
 
 .game--btn:active {
@@ -147,6 +148,7 @@ body {
 .power--btn {
     height: 15px;
     width: 15px;
+    cursor: pointer;
     border-radius: 50%;
     border: 2px darkgray outset;
     background: radial-gradient(#AAAAAA, #767676);
@@ -281,6 +283,7 @@ body {
 .restart--btn {
     height: 15px;
     width: 15px;
+    cursor: pointer;
     background: radial-gradient(#AAAAAA, #767676);
     border-radius: 50%;
     border: 2px #A9A9A9 outset;
@@ -404,7 +407,7 @@ body {
 }
 
 .info--modal--title {
-    margin-top: 30px;
+    margin-top: 20px;
     color: #000000;
     text-shadow: 1px 1px 5px #20B2AA;
     text-align: center;
