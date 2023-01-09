@@ -1,41 +1,41 @@
-let buttons = document.querySelector('.js-game--btn__container')
-let allButtons = document.querySelectorAll('.js-game--btn')
-let startButton = document.querySelector('.js-startGame')
-let startScreen = document.querySelector('.js-startScreen')
-let quit = document.querySelector('.js-quit--btn')
-let startGame = document.querySelector('.js-restart--btn')
-let powerBtn = document.querySelector('.js-power--btn')
-let scoreScreen = document.querySelector('.js-screen1')
-let highScoreScreen = document.querySelector('.js-screen2')
-let playerLight = document.querySelector('.js-player--light')
-let compLight = document.querySelector('.js-comp--light')
-let logoLight = document.querySelector('.js-game--logo')
-let powerTxtLight = document.querySelector('.js-power--txt')
-let startTxtLight = document.querySelector('.js-restart--txt')
-let info = document.querySelector('.js-info--modal__container')
-let infoBtn = document.querySelector('.js-modal--btn')
-let infoClose = document.querySelector('.js-info--modal--close')
-let compStoredColors = []
-let playerStoredColors = []
-let counter = 0;
-let score = 0;
-let highScore = 0;
-let timer = 0;
-let powerOff = true
-let canClick = false
-let canClickStart = false
-let modalOpen = false
-let i = 0
-let n = 0
-let clickSound = new Audio()
+let buttons = document.querySelector('.js-game--btn__container')    //button container
+let allButtons = document.querySelectorAll('.js-game--btn')         //all buttons in an array
+let startButton = document.querySelector('.js-startGame')           //start button on title screen
+let startScreen = document.querySelector('.js-startScreen')         //title screen container
+let quit = document.querySelector('.js-quit--btn')                  //quit button
+let startGame = document.querySelector('.js-restart--btn')          //control panel start button
+let powerBtn = document.querySelector('.js-power--btn')             //control panel power button
+let scoreScreen = document.querySelector('.js-screen1')             //left score screen
+let highScoreScreen = document.querySelector('.js-screen2')         //right score screen
+let playerLight = document.querySelector('.js-player--light')       //player turn light
+let compLight = document.querySelector('.js-comp--light')           //comp turn light
+let logoLight = document.querySelector('.js-game--logo')            //control panel logo
+let powerTxtLight = document.querySelector('.js-power--txt')        //control panel power text
+let startTxtLight = document.querySelector('.js-restart--txt')      //control panel start text
+let info = document.querySelector('.js-info--modal__container')     //info modal container
+let infoBtn = document.querySelector('.js-modal--btn')              //"?" info button
+let infoClose = document.querySelector('.js-info--modal--close')    //close modal button
+let compStoredColors = []                                           //array to hold comps sequence
+let playerStoredColors = []                                         //array to hold players clicked colors
+let counter = 0;                                                    //used to check if end of round
+let score = 0;                                                      //used to show score
+let highScore = 0;                                                  //used to show high score
+let timer = 0;                                                      //NOT ACTIVE: used to time exponential decay
+let powerOff = true                                                 //used to tell if power is on or off
+let canClick = false                                                //used to prevent clicking during computers turn / clicking too fast on your turn
+let canClickStart = false                                           //used to prevent start button from working while other functions are running
+let modalOpen = false                                               //used to tell if info modal is open or closed
+let i = 0                                                           //used for lighting proper buttons and game logic     
+let n = 0                                                           //start lights counter
+let clickSound = new Audio()                                        //Audio constructors vvv
 let menuSound = new Audio()
 let wrongSound = new Audio()
 let redSound = new Audio()
 let blueSound = new Audio()
 let greenSound = new Audio()
-let yellowSound = new Audio()
+let yellowSound = new Audio()                                       //Audio constructors ^^^
 
-let btnColors = {
+let btnColors = {                                                   //button colors: used for ony compChooses()
     red: {
         active: 'red',
         inactive: 'darkred',
@@ -54,23 +54,23 @@ let btnColors = {
     },
 }
 
-//Opens game// makes sure game is off
+
+//Event Listeners//
+
+//Opens game// makes sure game is off 
 startButton.addEventListener('click', () => {
-    powerOff = true
-    scoreScreen.innerText = null
-
     menuClickSound()
+    powerOff = true
+    scoreScreen.innerText = null                // clears score screen
+    startScreen.style.display = 'none'          // closes title screen
 
-    setTimeout(() => {
-        startScreen.style.display = 'none'
-    }, 100);
-
-    allButtons.forEach((btn) => {
+    allButtons.forEach((btn) => {               // makes all buttons style "off"
         btn.style.backgroundColor = 'black'
         btn.style.borderColor = 'rgb(44, 44, 44)'
     });    
 });
 
+//Turns game on// adds styling acording to "on"/"off" status // makes sure game status is reset
 powerBtn.addEventListener('click',() => {
     if(powerOff === true){
         buttonClickSound()
@@ -83,10 +83,7 @@ powerBtn.addEventListener('click',() => {
         logoLight.classList.add('js-light--active')
         powerTxtLight.classList.add('js-light--active')
         startTxtLight.classList.add('js-light--active')
-
-        setTimeout(() => {
-            startLights();
-        }, 100);
+        startLights();
     }else{
         buttonClickSound()
         powerOff = true
@@ -100,13 +97,13 @@ powerBtn.addEventListener('click',() => {
         powerTxtLight.classList.remove('js-light--active')
         logoLight.classList.remove('js-light--active')
         startTxtLight.classList.remove('js-light--active')
-
         allButtons.forEach(function(btn){
             btn.style.backgroundColor = 'black'
             btn.style.borderColor = 'rgb(44, 44, 44)'
         });
     }
 
+    //sets buttons to colored after startup sequence
     if(powerOff === false){
             n = 0
         setTimeout(styleReset,1600);
@@ -114,6 +111,7 @@ powerBtn.addEventListener('click',() => {
     }
 });
 
+//Starts Game// makes sure game status is reset
 startGame.addEventListener('click', () => {
         buttonClickSound()
     if(powerOff === false && canClickStart == true){
@@ -125,6 +123,7 @@ startGame.addEventListener('click', () => {
     }
 });
 
+//adds clicked button color to array for game logic & lights clicked buttons
 buttons.addEventListener('click', (evt) => {
     buttonClickSound()
     if(powerOff === false && canClick === true){
@@ -142,6 +141,7 @@ buttons.addEventListener('click', (evt) => {
     }
 });
 
+//Quits to title// makes sure game is off and info modal is closed
 quit.addEventListener('click', () => {
     menuClickSound()
     startScreen.style.display = 'block'
@@ -156,6 +156,7 @@ quit.addEventListener('click', () => {
     powerOff = true
 });
 
+//Opens info modal// logic to tell if modal is already open
 infoBtn.addEventListener('click', () => {
     menuClickSound()
 
@@ -168,6 +169,7 @@ infoBtn.addEventListener('click', () => {
     }
 });
 
+//Closes modal// button in modal
 infoClose.addEventListener('click', () => {
     menuClickSound()
     info.style.display = 'none'
@@ -175,6 +177,9 @@ infoClose.addEventListener('click', () => {
 });
 
 
+//Functions//
+
+//Light sequence for power "on"
 function startLights(){
     setTimeout(() => {
         allButtons.forEach((btn) => {
@@ -198,24 +203,29 @@ function startLights(){
     },600); 
 }
 
-//turns btnColors into and array then pushes random value to new array to end of sequince
+//turns btnColors into and array then pushes random value to end of array(compStoredColors)
 function compChooses(){
     let randomColor = Object.entries(btnColors);
     compStoredColors.push(randomColor[Math.floor(Math.random() * randomColor.length)]);
 }
 
+//Game light sequence// 
 function lightButtons() {
     canClickStart = false
     canClick = false
+
+    //turn indicator lights
     playerLight.style.background = null
     compLight.style.background = 'radial-gradient(rgb(255, 0, 0), rgb(0, 0, 0))'
+    
+    //loops through compStoredColors to create the computers light sequence
     function lightLoop() {
-        
         setTimeout(() => {
             let getButton = document.getElementById(`${compStoredColors[i][0]}Btn`);
             let activeColor = `${compStoredColors[i][1].active}`
             getButton.style.backgroundColor = `${activeColor}`
 
+            //button sound logic
             if(activeColor == 'red'){
                 redBtnSound()
             }else if(activeColor == 'blue'){
@@ -226,19 +236,22 @@ function lightButtons() {
                 yellowBtnSound()
             }
 
-            // console.log(activeColor)
-
             i++
-            timer = i
+            timer = i // NOT ACTIVE
         }, 300);
 
         setTimeout(() => {
-            styleReset();          
+
+            //resets colors to default after being made active
+            styleReset();
+            
+            //loops lights untill end of sequence
             if(i < compStoredColors.length){
                 lightLoop();
             }else{
                 canClick = true
                 canClickStart = true
+                //turn indicator lights
                 playerLight.style.background = 'radial-gradient(rgb(255, 0, 0), rgb(0, 0, 0))'
                 compLight.style.background = null
             }
@@ -247,29 +260,33 @@ function lightButtons() {
     lightLoop();
 }
 
+//checks if players clicked button matches the computers sequence
 function gameLogic() {
+    
     if(compStoredColors[counter][0] === playerStoredColors[counter]){
         counter += 1;
+        //if statement to check if end of round :: WIN
         if(compStoredColors.length === counter){
-            playerStoredColors = [];
-            counter = 0;
-            i = 0;
-            score += 1;
+            playerStoredColors = [];    //resets players choices for next round
+            counter = 0;                //resets counter
+            i = 0;                      //resets 'i' for lightButtons
+            score += 1;                 //adds 1 to scorre after each won round
             scoreScreen.innerText = score
-            compChooses();
+            compChooses();              //starts next round
             lightButtons();
         }
-    }else{
-        if(score > highScore){
+    }else{                              //if statement to check if end of round :: LOSS
+        if(score > highScore){          //sets high score 
             highScore = score
             highScoreScreen.innerText = highScore
         }
         wrongAnswerSound();
         reset();
-        gameOver();
+        gameOver();                     //runs game over light sequence
     }
 }
 
+//Game Over light sequence//
 function gameOver() {
     let m = 0 
     function gameOverLights() {
@@ -296,15 +313,17 @@ function gameOver() {
     }
     gameOverLights();
 
+    // sets lights back to default after game over light sequence
     setTimeout(() => {
         styleReset(); 
-        playerLight.style.background = null
+        playerLight.style.background = null //turns off turn indicators
         compLight.style.background = null
-        canClickStart = true
-        startTxtLight.classList.add('js-light--active')
+        canClickStart = true    //allows start to be clicked
+        startTxtLight.classList.add('js-light--active') //turns start light on
     }, 1700);
 }
 
+//condensed reset into a function
 function reset() {
     powerOff = false
     canClick = false
@@ -316,6 +335,7 @@ function reset() {
     scoreScreen.innerText = 0
 }
 
+//condensed default colors reset
 function styleReset() {
     allButtons.forEach((btn) => {
         btn.style.backgroundColor = null
@@ -323,15 +343,18 @@ function styleReset() {
     }) 
 }
 
+
+//Audio Play:Pause//
+
 function wrongAnswerSound() {
-    wrongSound.src = 'audio/Incorrect.wav'
-    wrongSound.play()
+    wrongSound.src = 'audio/Incorrect.wav' //gets audio source
+    wrongSound.play()   //plays audio
 }
 
 function redBtnSound() {
     redSound.src = 'audio/Button1.wav'
     redSound.play()
-    setTimeout(() => {
+    setTimeout(() => {      //timer to pause audio and reset audio clip to the beginning
         redSound.pause()
         redSound.currentTime = 0
     },500)
@@ -340,7 +363,7 @@ function redBtnSound() {
 function blueBtnSound() {
     blueSound.src = 'audio/Button2.wav'
     blueSound.play()
-    setTimeout(() => {
+    setTimeout(() => {      
         blueSound.pause()
         blueSound.currentTime = 0
     },500)
