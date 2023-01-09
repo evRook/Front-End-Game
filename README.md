@@ -6,19 +6,13 @@
 
 ### The game makes a sequence of lights and sounds and requires a player to repeat the order. If the player succeeds, the sequence becomes progressively longer. Once the player misses the game is over!
 
-<br>
-
 #### This Simon clone is a version created so you can play right here in your browser!
-
-<br>
 
 #### To start playing, [Click Here!](https://evrook.github.io/Front-End-Game/) 
 
 <br>
 
 ## Rules:
-
----
 
 #### If you arer unfamilliar with how Simon is played.
 
@@ -57,7 +51,6 @@
 <br>
 
 ## Later Additions:
----
 - Aditional Game Modes.
     - ex: A mode where time between light sequence progressivly shortens. 
 - High Score remains if you refresh
@@ -67,7 +60,6 @@
 <br>
 
 ## Technologies Used:
----
 - HTML
 - CSS
 - Javascript
@@ -75,7 +67,6 @@
 <br>
 
 ## Sources:
----
 - [Simon Wiki](https://en.wikipedia.org/wiki/Simon_(game)) (Rules & Description)
 - [freesound.org](https://freesound.org/) (Audio Clips)
 - [transparenttextures.com](https://www.transparenttextures.com/) (CSS textures)
@@ -83,7 +74,6 @@
 <br>
 
 ## Contributions
----
 - [Source Code](https://github.com/evRook/Front-End-Game)
 - [Issue Tracker](https://github.com/evRook/Front-End-Game/issues)
 
