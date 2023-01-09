@@ -1,10 +1,3 @@
-// TO-DO :
-//  -add sounds
-//  -fix power button edge case
-//  -fix class names so theyre easier to follow
-//  -if time: after loss add no color pause before rest style
-//
-
 let buttons = document.querySelector('.js-game--btn__container')
 let allButtons = document.querySelectorAll('.js-game--btn')
 let startButton = document.querySelector('.js-startGame')

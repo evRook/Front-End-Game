@@ -14,7 +14,7 @@ html {
 body {
     height: 100%;
     width: 100%;
-    background: linear-gradient(to bottom right,rgb(40, 40, 40), rgb(0, 0, 0));
+    background: linear-gradient(to bottom right,#282828, #000000);
 }
 
 .game--container {
@@ -29,10 +29,10 @@ body {
     margin: auto;
     height: 675px;
     width: 580px;
-    border: 16px rgb(44, 44, 44) outset;
+    border: 16px #282828 outset;
     border-radius: 30%;
-    background-color: rgb(15, 15, 15); 
-    box-shadow: 8px 15px 8px rgb(8, 8, 8);
+    background-color: #0F0F0F; 
+    box-shadow: 8px 15px 8px #080808;
     rotate: 15 1 10 10deg;
 }
 
@@ -47,13 +47,13 @@ body {
     width: 550px;
     border: 6px rgb(44, 44, 44) outset;
     border-radius: 40%;
-    background-color: black;
-    box-shadow: 8px 19px 8px rgb(0, 0, 0);
+    background-color: #000000;
+    box-shadow: 8px 19px 8px #000000;
 }
 
 .game--btn {
     background-image: url(img/skin-side-up.png);
-    box-shadow: inset 0 0 100px black;
+    box-shadow: inset 0 0 100px #000000;
 }
 
 .game--btn:active {
@@ -132,7 +132,6 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    color:white;
 }
 
 .power--container {
@@ -142,7 +141,6 @@ body {
     flex-direction: column;
     align-items: center;
     rotate: 27deg;
-    
 }
 
 .power--btn {
@@ -150,7 +148,7 @@ body {
     width: 15px;
     border-radius: 50%;
     border: 2px darkgray outset;
-    background: radial-gradient(rgb(170,170,170), rgb(118, 118, 118));
+    background: radial-gradient(#AAAAAA, #767676);
 }
 
 .power--btn:active {
@@ -181,8 +179,8 @@ body {
     justify-content: center;
     color: rgba(255, 0, 0, 0.5);
     text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-    border: 2px darkred ridge;
-    background-color: rgb(84, 0, 0);
+    border: 2px #8B0000 ridge;
+    background-color: #540000;
     background-image: url(img/pyramid.png);
     text-align: center;
     font-size: 22px;
@@ -226,8 +224,8 @@ body {
     height: 10px;
     width: 10px;
     border-radius: 50%;
-    border: 1px rgb(60, 60, 60) outset;
-    background: radial-gradient(rgb(100, 100, 100), rgb(0, 0, 0));
+    border: 1px #3C3C3C outset;
+    background: radial-gradient(#646464, #000000);
 }
 
 .comp--light__container {
@@ -248,8 +246,8 @@ body {
     height: 10px;
     width: 10px;
     border-radius: 50%;
-    border: 1px rgb(60, 60, 60) outset;
-    background: radial-gradient(rgb(100, 100, 100), rgb(0, 0, 0));
+    border: 1px #3C3C3C outset;
+    background: radial-gradient(#646464, #000000);
 }
 
 .game--logo {
@@ -275,16 +273,16 @@ body {
     margin: 0 0 5px 0;
     font-size: 20px;
     font-family: 'Orbitron', sans-serif;
-    background-color: rgb(15, 15, 15);
+    background-color: #0F0F0F;
     color: rgba(95, 95, 95, 0.5);
 }
 
 .restart--btn {
     height: 15px;
     width: 15px;
-    background: radial-gradient(rgb(170,170,170), rgb(118, 118, 118));
+    background: radial-gradient(#AAAAAA, #767676);
     border-radius: 50%;
-    border: 2px darkgray outset;
+    border: 2px #A9A9A9 outset;
 }
 
 .restart--btn:active {
@@ -299,7 +297,7 @@ body {
     width: 100%;
     height: 100%; 
     font-family: 'Righteous', cursive;
-    background: linear-gradient(to bottom right,rgb(40, 40, 40), rgb(0, 0, 0));
+    background: linear-gradient(to bottom right,#282828, #000000);
 }
 
 .title__container {
@@ -317,18 +315,18 @@ body {
 .title {
     margin-bottom: 10px;
     font-size: 100px;
-    text-shadow: 2px 2px 5px lightseagreen;
+    text-shadow: 2px 2px 5px #20B2AA;
     transition: 1s;
 }
 
 .title:hover {
-    text-shadow: 2px 2px 5px darkred;
+    text-shadow: 2px 2px 5px #8B0000;
     transition: 1s;
 }
 
 .title--content {
     font-family: 'Bungee Hairline', cursive;
-    text-shadow: 0 0 white;
+    text-shadow: 0 0 #FFFFFF;
 }
 
 .startGame {
@@ -339,7 +337,7 @@ body {
     color: lightseagreen;
     font-size: 40px;
     text-align: center;
-    text-shadow: 0 0 5px lightseagreen;
+    text-shadow: 0 0 5px #20B2AA;
     font-family: 'Bungee Hairline', cursive;
     transition: 1s;
 }
@@ -347,7 +345,7 @@ body {
 .startGame:hover {
     transition: 1s;
     color: lightseagreen;
-    text-shadow: 0 0 25px lightseagreen;
+    text-shadow: 0 0 25px #20B2AA;
 }
 
 .footer--container {
@@ -365,7 +363,7 @@ body {
 .quit--btn {
     font-size: 50px;
     font-family: 'Bungee Hairline', cursive;
-    text-shadow: 0 0 2px white;
+    text-shadow: 0 0 2px #FFFFFF;
     cursor: pointer;
     rotate: -2deg;
 }
